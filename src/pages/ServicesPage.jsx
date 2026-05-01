@@ -4,6 +4,7 @@ import ServicesGrid from '../sections/services/ServicesGrid';
 const ServicesPage = () => {
   return (
     <>
+     
       <ServicesGrid />
     </>
   );

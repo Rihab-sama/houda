@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Tag, MapPin, ChevronLeft, LayoutGrid, List } from 'lucide-react';
+import { Tag, MapPin, ArrowLeft, LayoutGrid, List } from 'lucide-react';
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 const ALL_SERVICES = [
@@ -23,7 +23,7 @@ const ALL_SERVICES = [
     tag: 'نخبة',
     description: "اتصال عميق، انسجام وعمل — لأولئك الذين يختارون التميز.",
     image: '/service-seances.png', category: 'coaching',
-    price: '0 درهم', location: 'عبر الإنترنت',
+    price: '8 درهم', location: 'عبر الإنترنت',
   },
   {
     id: 4, title: 'تأمل موجه',
@@ -44,7 +44,7 @@ const ALL_SERVICES = [
     tag: 'طاقة',
     description: 'طقس موجه لبدء كل يوم بنية وطاقة إيجابية.',
     image: '/service-meditation.png', category: 'meditation',
-    price: '0 درهم', location: 'عبر الإنترنت',
+    price: '90 درهم', location: 'عبر الإنترنت',
   },
   {
     id: 7, title: "التميز الأنثوي",
@@ -70,8 +70,8 @@ const ALL_SERVICES = [
 ];
 
 const FILTERS = [
-  { key: 'all', label: 'جميع الأبواب' },
-  { key: 'coaching', label: 'كوتشينج' },
+  { key: 'all', label: 'جميع الخدمات' },
+  { key: 'coaching', label: 'حصص فردية ' },
   { key: 'meditation', label: 'تأمل' },
   { key: 'courses', label: 'دورات وماستركلاس' },
 ];
@@ -84,28 +84,22 @@ const handleCardMouseMove = (e, card) => {
   card.style.setProperty('--m-x', `${(x / rect.width) * 100}%`);
   card.style.setProperty('--m-y', `${(y / rect.height) * 100}%`);
 
-  const centerX = rect.width / 2;
-  const centerY = rect.height / 2;
-  card.style.transform = `perspective(1000px) translateY(-8px) rotateX(${(centerY - y) / 20}deg) rotateY(${(x - centerX) / 20}deg)`;
+  // Removed 3D tilt
 };
 
 const handleCardMouseLeave = (card) => {
-  card.style.transform = `perspective(1000px) translateY(0) rotateX(0) rotateY(0)`;
   card.style.setProperty('--m-x', `50%`);
   card.style.setProperty('--m-y', `50%`);
 };
 
 // ─── CARD COMPONENT ──────────────────────────────────────────────────────────
-const ServiceCard = ({ service, index }) => (
-  <motion.div
-    layout
+const ServiceCard = ({ service }) => (
+  <motion.a
+    href="/program-details"
     className="atlas-card-mini"
     onMouseMove={(e) => handleCardMouseMove(e, e.currentTarget)}
     onMouseLeave={(e) => handleCardMouseLeave(e.currentTarget)}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, scale: 0.98 }}
-    transition={{ duration: 0.5, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+    style={{ textDecoration: 'none' }}
   >
     <div className="card-bg-wrap">
       <img src={service.image} alt={service.title} className="card-img" loading="lazy" />
@@ -115,15 +109,16 @@ const ServiceCard = ({ service, index }) => (
     <div className="card-info">
       <span className="card-kicker">{service.tag}</span>
       <h3 className="card-title-mini">{service.title}</h3>
-      
+
       <div className="card-footer">
         <span className="card-price">{service.price}</span>
-        <a href="/program-details" className="card-link-arrow">
-          <ChevronLeft size={16} />
-        </a>
+        <div className="card-btn-cta">
+          <span>اكتشف المزيد</span>
+          <ArrowLeft size={14} />
+        </div>
       </div>
     </div>
-  </motion.div>
+  </motion.a>
 );
 
 
@@ -141,30 +136,20 @@ const ServicesGrid = () => {
 
       <div className="sg-editorial-container">
         {/* LEFT: MAIN GRID */}
+        {/* LEFT: MAIN GRID */}
         <div className="sg-main-content">
           <header className="sg-header">
             <h1 className="sg-page-title">اكتشف <span className="sg-serif">خدماتنا</span></h1>
             <p className="sg-page-desc">مجموعة مختارة ومخصصة من برامج المرافقة، الماستركلاس والتأملات لدعم توسعك الشخصي.</p>
           </header>
 
-          <div className="sg-top-bar">
-            <div className="sg-sort-links">
-              <span className="sg-sort-label">ترتيب حسب:</span>
-              <button className="sg-sort-btn active">الأحدث</button>
-              <button className="sg-sort-btn">السعر تصاعدياً</button>
-            </div>
-            <p className="sg-results-count">
-              <span>{filtered.length}</span> خدمات متاحة
-            </p>
-          </div>
+          <div className="sg-content-divider" />
 
-          <motion.div className="sg-catalog-grid" layout>
-            <AnimatePresence mode="popLayout">
-              {filtered.map((s, i) => (
-                <ServiceCard key={s.id} service={s} index={i} />
-              ))}
-            </AnimatePresence>
-          </motion.div>
+          <div className="sg-catalog-grid">
+            {filtered.map((s) => (
+              <ServiceCard key={s.id} service={s} />
+            ))}
+          </div>
         </div>
 
         {/* RIGHT: SIDEBAR */}
@@ -207,15 +192,17 @@ const ServicesGrid = () => {
 
         .sg-header {
           margin-bottom: 50px;
+          text-align: center;
         }
         .sg-page-title {
           font-family: var(--font-sans);
-          font-size: 2.8rem;
+          font-size: 4rem;
           font-weight: 800;
           color: var(--purple-deep);
           text-transform: uppercase;
           letter-spacing: -1px;
-          margin-bottom: 12px;
+          margin-bottom: 15px;
+          line-height: 1.1;
         }
         .sg-serif {
           font-family: var(--font-serif);
@@ -225,10 +212,11 @@ const ServicesGrid = () => {
           color: var(--gold);
         }
         .sg-page-desc {
-          font-size: 1rem;
+          font-size: 1.15rem;
           color: rgba(45,18,68,0.6);
-          max-width: 600px;
+          max-width: 700px;
           line-height: 1.6;
+          margin: 0 auto;
         }
 
         .sg-mesh {
@@ -236,6 +224,12 @@ const ServicesGrid = () => {
           background: radial-gradient(circle at 80% 20%, rgba(220,160,17,0.03), transparent 40%),
                       radial-gradient(circle at 20% 80%, rgba(45,18,68,0.03), transparent 40%);
           pointer-events: none;
+        }
+
+        .sg-content-divider {
+          height: 1px;
+          background: rgba(220, 160, 17, 0.15);
+          margin-bottom: 50px;
         }
 
         .sg-editorial-container {
@@ -252,22 +246,36 @@ const ServicesGrid = () => {
         /* Top Bar */
         .sg-top-bar {
           display: flex; justify-content: space-between; align-items: center;
-          margin-bottom: 40px;
-          padding-bottom: 20px;
-          border-bottom: 1px solid rgba(0,0,0,0.06);
+          margin-bottom: 50px;
+          padding: 15px 0;
+          border-bottom: 1px solid rgba(220, 160, 17, 0.15);
         }
-        .sg-sort-links { display: flex; align-items: center; gap: 24px; }
-        .sg-sort-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: rgba(0,0,0,0.3); letter-spacing: 2px; }
+        .sg-sort-links { display: flex; align-items: center; gap: 30px; }
+        .sg-sort-label { 
+          font-size: 0.65rem; font-weight: 800; text-transform: uppercase; 
+          color: var(--purple-deep); opacity: 0.4; letter-spacing: 2px; 
+        }
         .sg-sort-btn {
-          background: none; border: none; padding: 0;
-          font-size: 0.72rem; font-weight: 700; color: rgba(0,0,0,0.4);
-          cursor: pointer; transition: all 0.3s;
+          background: none; border: none; padding: 5px 0;
+          font-size: 0.75rem; font-weight: 700; color: rgba(45, 18, 68, 0.5);
+          cursor: pointer; transition: all 0.4s ease;
+          position: relative;
           text-transform: uppercase; letter-spacing: 1px;
         }
-        .sg-sort-btn.active { color: var(--gold-dark); border-bottom: 1px solid var(--gold); }
-        .sg-sort-btn:hover { color: var(--purple-deep); }
-        .sg-results-count { font-size: 0.75rem; color: rgba(0,0,0,0.4); font-weight: 500; }
-        .sg-results-count span { color: var(--gold-dark); font-weight: 700; }
+        .sg-sort-btn::after {
+          content: ''; position: absolute; bottom: 0; left: 0;
+          width: 0; height: 1px; background: var(--gold);
+          transition: width 0.4s ease;
+        }
+        .sg-sort-btn.active { color: var(--purple-deep); }
+        .sg-sort-btn.active::after, .sg-sort-btn:hover::after { width: 100%; }
+        
+        .sg-results-count { 
+          font-size: 0.75rem; color: var(--purple-deep); font-weight: 600; 
+          background: rgba(220, 160, 17, 0.05); padding: 8px 16px; 
+          border-radius: 50px; border: 1px solid rgba(220, 160, 17, 0.1);
+        }
+        .sg-results-count span { color: var(--gold-dark); font-weight: 800; margin-left: 4px; }
 
         /* Grid */
         .sg-catalog-grid {
@@ -339,7 +347,10 @@ const ServicesGrid = () => {
           cursor: pointer;
           transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
         }
-        .atlas-card-mini:hover { box-shadow: 0 40px 80px rgba(45,18,68,0.2); }
+        .atlas-card-mini:hover { 
+          transform: translateY(-12px);
+          box-shadow: 0 30px 60px rgba(13,6,22,0.4); 
+        }
 
         .card-bg-wrap { position: absolute; inset: 0; z-index: 1; }
         .card-img {
@@ -377,25 +388,97 @@ const ServicesGrid = () => {
           padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1);
         }
         .card-price { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.8); }
-        .card-link-arrow {
-          width: 24px; height: 24px; border-radius: 50%;
-          background: var(--gold); color: var(--purple-deep);
-          display: flex; align-items: center; justify-content: center;
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        .card-btn-cta {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 6px 14px;
+          background: var(--gold);
+          color: var(--purple-deep);
+          border-radius: 50px;
+          font-size: 0.68rem;
+          font-weight: 800;
+          text-decoration: none;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 4px 15px rgba(220, 160, 17, 0.15);
         }
-        .atlas-card-mini:hover .card-link-arrow { transform: rotate(45deg); scale: 1.1; }
+        .card-btn-cta span { margin-top: 2px; }
+        .card-btn-cta:hover {
+          background: white;
+          transform: translateY(-2px);
+          box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .atlas-card-mini:hover .card-btn-cta { 
+           /* Optional: scale up slightly */
+        }
 
         /* Responsive */
         @media (max-width: 1200px) {
           .sg-editorial-container { grid-template-columns: 1fr 260px; gap: 40px; }
         }
         @media (max-width: 900px) {
-          .sg-editorial-container { grid-template-columns: 1fr; }
-          .sg-sidebar { display: none; } /* On mobile, we might want a drawer, but starting clean */
+          .sg-editorial-container { 
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+          }
+          .sg-main-content { 
+            display: contents; /* Allows children to be ordered relative to sidebar */
+          }
+          
+          .sg-header { 
+            order: 1; 
+            text-align: center;
+            margin-bottom: 30px;
+          }
+          .sg-page-title { font-size: 3rem; }
+          .sg-page-desc {
+            margin: 0 auto;
+            font-size: 1.05rem;
+          }
+          .sg-content-divider { order: 2; margin-bottom: 20px; }
+          .sg-sidebar { 
+            order: 3; 
+            display: block; 
+            margin-bottom: 20px;
+          }
+          .sg-catalog-grid { order: 4; }
+
+          .sg-sidebar-inner { 
+            position: relative; top: 0; 
+            padding: 15px; 
+            background: rgba(255, 255, 255, 0.4);
+            border: none;
+            box-shadow: none;
+          }
+          .sg-sidebar-title { display: none; }
+          .sg-nav-list { 
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 12px;
+            justify-content: center;
+          }
+          
+          .sg-nav-bullet { display: none; }
+          
+          .sg-nav-item { 
+            white-space: nowrap; 
+            width: auto; 
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            border: 1px solid rgba(0,0,0,0.05);
+          }
+          .sg-nav-item.active { 
+            background: var(--purple-deep); 
+          }
+          .sg-nav-item.active .sg-nav-label { color: white; }
+          .sg-nav-item.active .sg-nav-count { color: var(--gold); opacity: 1; }
+          .sg-sidebar-promo { display: none; }
         }
         @media (max-width: 600px) {
           .sg-catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-          .sh-title { font-size: 2.2rem; }
+          .sg-page-title { font-size: 4rem; }
         }
       `}</style>
     </section>
