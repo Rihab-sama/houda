@@ -10,7 +10,7 @@ const AboutMe = () => {
 
             <div className="avant-container">
                 <div className="avant-layout">
-                    <div className="avant-focal-point reveal">
+                    <div className="avant-focal-point">
                         <div className="architect-frame">
                             <svg className="frame-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
                                 <path d="M10,0 L100,0 L90,100 L0,100 Z" fill="none" className="frame-path" />
@@ -21,7 +21,7 @@ const AboutMe = () => {
                     </div>
 
                     <div className="avant-content">
-                        <div className="node-manifesto reveal delay-1">
+                        <div className="node-manifesto">
                             {/* التصميم الجديد المماثل للهيرو */}
                             <div className="zenith-meta" style={{ marginBottom: '20px', justifyContent: 'flex-start' }}>
                                 <span className="meta-line"></span>
@@ -35,7 +35,7 @@ const AboutMe = () => {
                             <p>أنا هدى، لايف كوتش أرافقك لاكتشاف قوتك الداخلية وتحقيق توازن حقيقي في حياتك.
                                 أساعدك على التحرر من التوتر والضغوط، وبناء ثقة راسخة بنفسك، من خلال برامج عملية تُحدث تغييراً ملموساً في حياتك.</p>
                             
-                            <div className="stat-grid-v3 reveal delay-2">
+                            <div className="stat-grid-v3">
                                 <div className="stat-item-v3">
                                     <span className="sv3-num">+500</span>
                                     <span className="sv3-label">مستفيد(ة)</span>
@@ -53,13 +53,13 @@ const AboutMe = () => {
                             </div>
                         </div>
 
-                        <div className="node-quote reveal delay-2">
+                        <div className="node-quote">
                             <span className="quote-mark">“</span>
                             <blockquote> التغيير الحقيقي يبدأ عندما تقرر أن تستثمر في نفسك.
                             </blockquote>
                         </div>
 
-                        <div className="node-action reveal delay-3">
+                        <div className="node-action">
                             <a href="/about" className="btn-experimental">
                                 اكتشف القصة كاملة
                                 <div className="btn-line"></div>
