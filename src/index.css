@@ -3882,3 +3882,14 @@ LUX GALLERY / MINIMALIST AURA DESIGN SYSTEM
 .testimonials-ticker-container {
     overflow: hidden;
 }
+
+/* --- Lifting Testimonials Section --- */
+.testimonials-ticker-section {
+    padding-top: 0 !important;
+    padding-bottom: 40px;
+}
+
+/* --- Small Padding Adjust --- */
+.testimonials-ticker-section {
+    padding-top: 20px !important;
+}
