@@ -303,9 +303,100 @@ h3 {
     aspect-ratio: 1/1.3;
     object-fit: cover;
     border-radius: 20px;
-    box-shadow: 0 60px 120px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 60px 120px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 2;
+}
+
+/* --- THE CELESTIAL THEME: About Page Aesthetic --- */
+.testimonials-ticker-section.celestial-theme:not(.compact-mode) {
+    background: linear-gradient(180deg, var(--midnight) 0%, #1A0D28 50%, var(--midnight) 100%) !important;
+    padding: 60px 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.celestial-bg-elements {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.star-field-local {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 20px 30px, #eee, rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0));
+    background-size: 200px 200px;
+    opacity: 0.3;
+}
+
+.nebula-glow-local {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(108, 62, 145, 0.15), transparent 70%);
+    filter: blur(80px);
+}
+
+.ambient-orb-local {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.4;
+    animation: orb-drift-local 15s infinite alternate ease-in-out;
+}
+
+.orb-gold-local {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(220, 160, 17, 0.1), transparent 70%);
+    top: -10%;
+    right: 10%;
+}
+
+.orb-purple-local {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(147, 51, 234, 0.1), transparent 70%);
+    bottom: -10%;
+    left: 10%;
+    animation-delay: -7s;
+}
+
+@keyframes orb-drift-local {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(30px, 50px) scale(1.1);
+    }
+}
+
+.testimonials-ticker-section.celestial-theme .ticker-img-pure {
+    border: 1px solid rgba(220, 160, 17, 0.25) !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5) !important;
+    height: 320px !important;
+}
+
+.testimonials-ticker-section.celestial-theme .ticker-main-title {
+    color: #ffffff !important;
+    font-family: var(--font-serif) !important;
+    font-size: 3rem !important;
+    text-shadow: 0 0 20px rgba(220, 160, 17, 0.3) !important;
 }
 
 .portrait-glow {
@@ -3852,18 +3943,23 @@ LUX GALLERY / MINIMALIST AURA DESIGN SYSTEM
     left: 150%;
     transition: 0.8s;
 }
+
 /* --- Responsive Ticker Adjustments --- */
 @media (max-width: 768px) {
     .testimonials-ticker-section {
         padding: 60px 0;
     }
+
     .ticker-main-title {
         font-size: 2rem;
     }
+
     .ticker-img-pure {
-        height: 200px; /* ??? ???? ????? ?????? */
+        height: 200px;
+        /* ??? ???? ????? ?????? */
         border-radius: 12px;
     }
+
     .testimonials-ticker-track {
         gap: 20px;
     }
@@ -3902,7 +3998,8 @@ LUX GALLERY / MINIMALIST AURA DESIGN SYSTEM
 }
 
 .ticker-img-pure.small-img {
-    height: 220px; /* ??? ???? ????? ?????? */
+    height: 220px;
+    /* ??? ???? ????? ?????? */
     border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
 }

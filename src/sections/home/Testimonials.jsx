@@ -31,7 +31,7 @@ const Testimonials = ({ isCompact = false }) => {
 
   useAnimationFrame((t, delta) => {
     if (isPaused || trackWidth <= 0) return;
-    let moveBy = -0.8; 
+    let moveBy = -0.8;
     let currentX = x.get() + moveBy;
     if (currentX <= -trackWidth) {
       currentX += trackWidth;
@@ -40,27 +40,37 @@ const Testimonials = ({ isCompact = false }) => {
   });
 
   return (
-    <section className={`testimonials-ticker-section ${isCompact ? 'compact-mode' : ''}`}>
+    <section className={`testimonials-ticker-section celestial-theme ${isCompact ? 'compact-mode' : ''}`}>
+      {/* CELESTIAL BACKGROUND ELEMENTS */}
       {!isCompact && (
-        <div className="ticker-title-wrapper">
+        <div className="celestial-bg-elements">
+          <div className="star-field-local"></div>
+          <div className="nebula-glow-local"></div>
+          <div className="ambient-orb-local orb-gold-local"></div>
+          <div className="ambient-orb-local orb-purple-local"></div>
+        </div>
+      )}
+
+      {!isCompact && (
+        <div className="ticker-title-wrapper" style={{ position: 'relative', zIndex: 10 }}>
           <span className="ticker-mini-title">صدى التأثير</span>
           <h2 className="ticker-main-title">مشاعر حقيقية.. وقصص تحول</h2>
         </div>
       )}
 
       {isCompact && (
-        <div className="ticker-title-wrapper compact" style={{ marginBottom: '30px' }}>
+        <div className="ticker-title-wrapper compact" style={{ marginBottom: '30px', position: 'relative', zIndex: 10 }}>
           <span className="ticker-mini-title" style={{ fontSize: '0.65rem' }}>تجارب المشتركين</span>
         </div>
       )}
 
-      <div 
+      <div
         className="testimonials-ticker-container"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
-        style={{ cursor: 'grab', overflow: 'hidden' }}
+        style={{ cursor: 'grab', overflow: 'hidden', position: 'relative', zIndex: 10 }}
       >
-        <motion.div 
+        <motion.div
           ref={trackRef}
           className="testimonials-ticker-track"
           style={{ x }}
@@ -75,9 +85,9 @@ const Testimonials = ({ isCompact = false }) => {
         >
           {repeatedTestimonials.map((item, idx) => (
             <div key={idx} className="testimonial-ticker-item">
-              <img 
-                src={item.image} 
-                alt="Review" 
+              <img
+                src={item.image}
+                alt="Review"
                 className={`ticker-img-pure ${isCompact ? 'small-img' : ''}`}
                 draggable="false"
               />
