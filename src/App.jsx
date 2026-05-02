@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ReactLenis } from 'lenis/react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import ServicesPage from './pages/ServicesPage';
 import ProgramDetails from './pages/ProgramDetails';
@@ -17,6 +18,7 @@ function App() {
         smoothWheel: true
       }}>
         <div className="App">
+          <ScrollToTop />
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />

@@ -8,7 +8,7 @@ const ProgramCurriculum = ({ data }) => {
             <div className="mesh-orb orb-2"></div>
 
             <div className="avant-container">
-                <h2 className="l-title" style={{ color: 'white', marginBottom: '80px' }}>
+                <h2 className="l-title" style={{ color: 'white', marginBottom: '80px', textAlign: 'center' }}>
                     {data.title.split(' ')[0]} <span className="l-serif" style={{ color: 'var(--gold)' }}>{data.title.split(' ').slice(1).join(' ')}</span>
                 </h2>
                 <div className="curriculum-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>

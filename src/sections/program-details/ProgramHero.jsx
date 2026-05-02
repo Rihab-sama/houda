@@ -27,6 +27,22 @@ const ProgramHero = ({ data }) => {
                     <p className="zenith-desc">
                         {data.description}
                     </p>
+
+                    {/* Image for Mobile (placed here in the flow) */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="zenith-portrait-container mobile-hero-img"
+                    >
+                        <div className="l-frame">
+                            <img src={data.image} alt={data.title} className="zenith-img" style={{ width: '100%', height: 'auto' }} />
+                            <div className="portrait-glow"></div>
+                            <div className="accent-bracket top-right"></div>
+                            <div className="accent-bracket bottom-left"></div>
+                        </div>
+                    </motion.div>
+
                     <div className="l-info-bar" style={{ background: 'transparent', margin: '40px 0', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '60px', textAlign: 'center' }}>
                         <div className="l-info-item" style={{ textAlign: 'center' }}>
                             <span className="li-label">المدة</span>
@@ -55,12 +71,20 @@ const ProgramHero = ({ data }) => {
                             </span>
                         </div>
                     </div>
+
+                    <div className="hero-action" style={{ marginTop: '40px', display: 'flex', justifyContent: 'center' }}>
+                        <a href="https://wa.me/2126XXXXXXXX" target="_blank" rel="noopener noreferrer" className="btn-register">
+                            أسجل الآن <span>←</span>
+                        </a>
+                    </div>
                 </motion.div>
+
+                {/* Desktop Image (Side version) */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="zenith-portrait-container"
+                    className="zenith-portrait-container desktop-hero-img"
                 >
                     <div className="l-frame">
                         <img src={data.image} alt={data.title} className="zenith-img" style={{ width: '100%', height: 'auto' }} />
@@ -70,6 +94,47 @@ const ProgramHero = ({ data }) => {
                     </div>
                 </motion.div>
             </div>
+
+            <style>{`
+                .btn-register {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 15px;
+                    padding: 18px 45px;
+                    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+                    color: white;
+                    border-radius: 100px;
+                    font-weight: 700;
+                    font-size: 1.1rem;
+                    letter-spacing: 1px;
+                    text-decoration: none;
+                    box-shadow: 0 15px 35px rgba(181, 132, 11, 0.3);
+                    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+                .btn-register:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 20px 45px rgba(181, 132, 11, 0.4);
+                    color: white;
+                }
+                .btn-register span {
+                    font-size: 1.3rem;
+                    transition: transform 0.4s ease;
+                }
+                .btn-register:hover span {
+                    transform: translateX(-8px);
+                }
+
+                @media (max-width: 1100px) {
+                    .desktop-hero-img { display: none !important; }
+                    .mobile-hero-img { display: block !important; margin: 30px auto; width: 90%; }
+                    .zenith-content-container { display: flex; flex-direction: column; align-items: center; text-align: center; }
+                }
+                @media (min-width: 1101px) {
+                    .mobile-hero-img { display: none !important; }
+                    .desktop-hero-img { display: block !important; }
+                }
+            `}</style>
+
             <div className="huge-watermark">HARMONY</div>
         </section>
     );

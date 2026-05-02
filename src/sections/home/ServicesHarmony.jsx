@@ -7,17 +7,19 @@ const ServicesHarmony = () => {
             <div className="harmony-container">
                 <div className="harmony-header">
                     <h2 className="harmony-main-title">
-                      برامجي <span className="harmony-serif">وخدماتي</span>
+                        برامجي <span className="harmony-serif">وخدماتي</span>
                     </h2>
                     <p className="harmony-subtitle">
-                       أرافقك من خلال برامج عملية وجلسات موجهة لتحقيق التوازن وبناء الثقة في نفسك.
+                        أرافقك من خلال برامج عملية وجلسات موجهة لتحقيق التوازن وبناء الثقة في نفسك.
                     </p>
                 </div>
 
                 <div className="harmony-grid">
                     {/* 01 - Large Card Left */}
-                    <motion.div 
+                    <motion.a
+                        href="/services"
                         className="harmony-card card-large"
+                        style={{ textDecoration: 'none', display: 'block' }}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -27,18 +29,20 @@ const ServicesHarmony = () => {
                             <img src="./service-seances.png" alt="مرافقة عبر الإنترنت" />
                         </div>
                         <div className="card-glass-content">
-                            <span className="card-num">01 / مرافقة فردية</span> 
+                            <span className="card-num">01 / مرافقة فردية</span>
                             <h2 className="card-title">حصص <br /> خاصة فردية</h2>
                             <p className="card-desc">انغماس حي. اتصلي من أي مكان لجلسة كوتشينج عالية الجودة تضمن لك الوضوح والنتيجة.</p>
-                            <a href="/services" className="card-btn-primary"> الاطلاع على كل الحصص <span>←</span></a>
+                            <div className="card-btn-primary"> الاطلاع على كل الحصص <span>←</span></div>
                         </div>
-                    </motion.div>
+                    </motion.a>
 
                     {/* Right Column Stack */}
                     <div className="harmony-right-col">
                         {/* 02 - Medium Card Top */}
-                        <motion.div 
+                        <motion.a
+                            href="/services"
                             className="harmony-card card-medium"
+                            style={{ textDecoration: 'none', display: 'block' }}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -51,13 +55,15 @@ const ServicesHarmony = () => {
                                 <span className="card-num">02 / دورات تعليمية</span>
                                 <h3 className="card-title">دورات ماستركلاس</h3>
                                 <p className="card-desc">تعلمي مهارات جديدة وطوري وعيك من خلال دورات متخصصة ومكثفة.</p>
-                                <a href="/services" className="card-btn-primary"> الاطلاع على كل الدورات <span>←</span></a>
+                                <div className="card-btn-primary"> الاطلاع على كل الدورات <span>←</span></div>
                             </div>
-                        </motion.div>
+                        </motion.a>
 
                         {/* 03 - Medium Card Bottom */}
-                        <motion.div 
+                        <motion.a
+                            href="/services"
                             className="harmony-card card-medium"
+                            style={{ textDecoration: 'none', display: 'block' }}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -70,9 +76,9 @@ const ServicesHarmony = () => {
                                 <span className="card-num">03 / فضاء السكينة</span>
                                 <h3 className="card-title">فضاء التأمل</h3>
                                 <p className="card-desc">استمتعي بلحظات من الهدوء لتجديد طاقتك وتصفية ذهنك يومياً.</p>
-                                <a href="/services" className="card-btn-primary"> للاطلاع على كل التاملات <span>←</span></a>
+                                <div className="card-btn-primary"> للاطلاع على كل التاملات <span>←</span></div>
                             </div>
-                        </motion.div>
+                        </motion.a>
                     </div>
                 </div>
             </div>
