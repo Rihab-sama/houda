@@ -401,6 +401,7 @@ const ServicesGrid = () => {
           font-size: 0.8rem;
           font-weight: 800;
           text-decoration: none;
+          white-space: nowrap;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .card-btn-cta:hover {
@@ -473,8 +474,27 @@ const ServicesGrid = () => {
           .sg-sidebar-promo { display: none; }
         }
         @media (max-width: 600px) {
-          .sg-catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-          .sg-page-title { font-size: 4rem; }
+          .sg-catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+          .sg-page-title { font-size: 2.5rem; }
+          .card-info { padding: 15px; }
+          .card-title-mini { 
+            font-size: 1.05rem; 
+            line-height: 1.2;
+            margin-top: 5px;
+          }
+          .card-kicker { 
+            font-size: 0.6rem; 
+            padding: 4px 8px; 
+            margin-bottom: 8px; 
+          }
+          .card-footer-wrap { gap: 10px; padding-top: 10px; }
+          .card-btn-cta { 
+            padding: 10px 8px; 
+            gap: 4px; 
+            font-size: 0.7rem; 
+          }
+          .price-amount { font-size: 1.05rem !important; }
+          .price-label { font-size: 0.55rem; }
         }
       `}</style>
     </section>
