@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion, useAnimationFrame, useMotionValue } from 'framer-motion';
 
 const testimonials = [
@@ -15,13 +15,12 @@ const testimonials = [
   { id: 11, image: '/T11.jpeg' },
 ];
 
-const Testimonials = () => {
+const Testimonials = ({ isCompact = false }) => {
   const x = useMotionValue(0);
   const [trackWidth, setTrackWidth] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const trackRef = useRef(null);
 
-  // تكرار الصور لضمان سلاسة الدوران
   const repeatedTestimonials = [...testimonials, ...testimonials];
 
   useEffect(() => {
@@ -30,27 +29,30 @@ const Testimonials = () => {
     }
   }, []);
 
-  // محرك الحركة: يضيف قيمة بسيطة للموضع في كل إطار (Frame)
   useAnimationFrame((t, delta) => {
     if (isPaused || trackWidth <= 0) return;
-
-    let moveBy = -0.8; // سرعة ثابتة وهادئة
+    let moveBy = -0.8; 
     let currentX = x.get() + moveBy;
-
-    // الدوران اللانهائي (Seamless Loop)
     if (currentX <= -trackWidth) {
       currentX += trackWidth;
     }
-    
     x.set(currentX);
   });
 
   return (
-    <section className="testimonials-ticker-section">
-      <div className="ticker-title-wrapper">
-        <span className="ticker-mini-title">صدى التأثير</span>
-        <h2 className="ticker-main-title">مشاعر حقيقية.. وقصص تحول</h2>
-      </div>
+    <section className={`testimonials-ticker-section ${isCompact ? 'compact-mode' : ''}`}>
+      {!isCompact && (
+        <div className="ticker-title-wrapper">
+          <span className="ticker-mini-title">صدى التأثير</span>
+          <h2 className="ticker-main-title">مشاعر حقيقية.. وقصص تحول</h2>
+        </div>
+      )}
+
+      {isCompact && (
+        <div className="ticker-title-wrapper compact" style={{ marginBottom: '30px' }}>
+          <span className="ticker-mini-title" style={{ fontSize: '0.65rem' }}>تجارب المشتركين</span>
+        </div>
+      )}
 
       <div 
         className="testimonials-ticker-container"
@@ -66,7 +68,6 @@ const Testimonials = () => {
           onDragStart={() => setIsPaused(true)}
           onDragEnd={() => {
             setIsPaused(false);
-            // تصحيح الموضع عند انتهاء السحب لضمان الدوران
             let currentX = x.get();
             if (currentX > 0) x.set(currentX - trackWidth);
             if (currentX < -trackWidth) x.set(currentX + trackWidth);
@@ -77,7 +78,7 @@ const Testimonials = () => {
               <img 
                 src={item.image} 
                 alt="Review" 
-                className="ticker-img-pure"
+                className={`ticker-img-pure ${isCompact ? 'small-img' : ''}`}
                 draggable="false"
               />
             </div>

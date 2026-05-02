@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ProgramHero from '../sections/program-details/ProgramHero';
 import ProgramCurriculum from '../sections/program-details/ProgramCurriculum';
+import Testimonials from '../sections/home/Testimonials';
 import ProgramCTA from '../sections/program-details/ProgramCTA';
 
 import programsData from '../data/programs.json';
@@ -27,6 +28,7 @@ const ProgramDetails = () => {
         <main className="program-details-page">
             <ProgramHero data={data.hero} />
             <ProgramCurriculum data={data.curriculum} />
+            <Testimonials isCompact={true} />
             <ProgramCTA />
         </main>
     );
