@@ -3852,3 +3852,33 @@ LUX GALLERY / MINIMALIST AURA DESIGN SYSTEM
     left: 150%;
     transition: 0.8s;
 }
+/* --- Responsive Ticker Adjustments --- */
+@media (max-width: 768px) {
+    .testimonials-ticker-section {
+        padding: 60px 0;
+    }
+    .ticker-main-title {
+        font-size: 2rem;
+    }
+    .ticker-img-pure {
+        height: 200px; /* ??? ???? ????? ?????? */
+        border-radius: 12px;
+    }
+    .testimonials-ticker-track {
+        gap: 20px;
+    }
+}
+
+/* --- Final Perfect Ticker Styles --- */
+.testimonials-ticker-track {
+    display: flex;
+    gap: 60px;
+    white-space: nowrap;
+    width: fit-content;
+    align-items: center;
+    will-change: transform;
+}
+
+.testimonials-ticker-container {
+    overflow: hidden;
+}

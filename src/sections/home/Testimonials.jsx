@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { motion, useAnimation, useMotionValue } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useAnimationFrame, useMotionValue } from 'framer-motion';
 
 const testimonials = [
   { id: 1, image: '/t1.jpeg' },
@@ -16,13 +16,13 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
-  const [trackWidth, setTrackWidth] = useState(0);
-  const trackRef = useRef(null);
-  const controls = useAnimation();
   const x = useMotionValue(0);
+  const [trackWidth, setTrackWidth] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const trackRef = useRef(null);
 
-  // مضاعفة الصور لضمان سلاسة الحركة
-  const repeatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
+  // تكرار الصور لضمان سلاسة الدوران
+  const repeatedTestimonials = [...testimonials, ...testimonials];
 
   useEffect(() => {
     if (trackRef.current) {
@@ -30,17 +30,20 @@ const Testimonials = () => {
     }
   }, []);
 
-  // تشغيل الحركة التلقائية
-  useEffect(() => {
-    controls.start({
-      x: -trackWidth,
-      transition: {
-        duration: 60,
-        ease: "linear",
-        repeat: Infinity,
-      },
-    });
-  }, [trackWidth, controls]);
+  // محرك الحركة: يضيف قيمة بسيطة للموضع في كل إطار (Frame)
+  useAnimationFrame((t, delta) => {
+    if (isPaused || trackWidth <= 0) return;
+
+    let moveBy = -0.8; // سرعة ثابتة وهادئة
+    let currentX = x.get() + moveBy;
+
+    // الدوران اللانهائي (Seamless Loop)
+    if (currentX <= -trackWidth) {
+      currentX += trackWidth;
+    }
+    
+    x.set(currentX);
+  });
 
   return (
     <section className="testimonials-ticker-section">
@@ -49,57 +52,38 @@ const Testimonials = () => {
         <h2 className="ticker-main-title">مشاعر حقيقية.. وقصص تحول</h2>
       </div>
 
-      <div className="testimonials-ticker-container" style={{ cursor: 'grab' }}>
-        <motion.div
+      <div 
+        className="testimonials-ticker-container"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        style={{ cursor: 'grab', overflow: 'hidden' }}
+      >
+        <motion.div 
           ref={trackRef}
           className="testimonials-ticker-track"
           style={{ x }}
           drag="x"
-          dragConstraints={{ left: -trackWidth, right: 0 }}
-          onMouseEnter={() => controls.stop()} // يتوقف عند مرور الفأرة
-          onMouseLeave={() => {
-            // يستأنف الحركة عند ابتعاد الفأرة
-            controls.start({
-              x: -trackWidth,
-              transition: {
-                duration: 60,
-                ease: "linear",
-                repeat: Infinity,
-              },
-            });
-          }}
-          onDragStart={() => controls.stop()}
+          onDragStart={() => setIsPaused(true)}
           onDragEnd={() => {
-            controls.start({
-              x: -trackWidth,
-              transition: {
-                duration: 60,
-                ease: "linear",
-                repeat: Infinity,
-              },
-            });
+            setIsPaused(false);
+            // تصحيح الموضع عند انتهاء السحب لضمان الدوران
+            let currentX = x.get();
+            if (currentX > 0) x.set(currentX - trackWidth);
+            if (currentX < -trackWidth) x.set(currentX + trackWidth);
           }}
-          animate={controls}
         >
           {repeatedTestimonials.map((item, idx) => (
             <div key={idx} className="testimonial-ticker-item">
-              <img
-                src={item.image}
-                alt="Review"
+              <img 
+                src={item.image} 
+                alt="Review" 
                 className="ticker-img-pure"
                 draggable="false"
-                onError={(e) => {
-                  e.target.src = 'https://via.placeholder.com/300x500?text=Review';
-                }}
               />
             </div>
           ))}
         </motion.div>
       </div>
-
-      <style jsx>{`
-        /* سنبقي التنسيقات في index.css ولكن سنحذف الـ animation من هناك لنستخدم framer-motion */
-      `}</style>
     </section>
   );
 };
