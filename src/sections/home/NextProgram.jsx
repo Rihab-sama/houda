@@ -1,43 +1,63 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import coursesData from '../../data/courses.json';
 
 const NextProgram = () => {
+    // Find the newest featured course (like "التحرر من الغضب")
+    const featuredCourse = coursesData.find(c => c.isFeatured) || coursesData[0];
+
     return (
         <section id="next-program" className="lumine-section">
+            <style>{`
+                .l-img {
+                    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+                .l-frame:hover .l-img {
+                    transform: scale(1.05);
+                }
+                .l-desc {
+                    font-weight: 400;
+                    opacity: 0.85;
+                    line-height: 1.8;
+                }
+            `}</style>
             <div className="lumine-container">
                 <div className="lumine-content">
-                    <div className="l-folio">البرنامج القادم // 01</div>
+                    <div className="zenith-meta">
+                        <div className="meta-line"></div>
+                        <div className="meta-text">{featuredCourse.hero.tag}</div>
+                    </div>
 
                     <h2 className="l-title">
-                        تجربة <br />
-                        <span className="l-serif">السكينة المطلقة</span>
+                        {featuredCourse.hero.title.split(' ')[0]} <br />
+                        <span className="l-serif">{featuredCourse.hero.title.split(' ').slice(1).join(' ')}</span>
                     </h2>
 
                     <p className="l-desc">
-                        مرافقة فاخرة لتوضيح رؤيتك وتهدئة عقلك. أعد بناء توازنك الداخلي بمنهجية وأناقة.
+                        {featuredCourse.hero.tagline}. {featuredCourse.hero.description.slice(0, 150)}...
                     </p>
 
                     <div className="l-info-bar">
                         <div className="l-info-item">
                             <span className="li-label">البداية</span>
-                            <span className="li-value">15 أكتوبر</span>
+                            <span className="li-value">{featuredCourse.hero.stats.duration}</span>
                         </div>
                         <div className="l-info-divider"></div>
                         <div className="l-info-item">
                             <span className="li-label">المكان</span>
-                            <span className="li-value">عن بعد</span>
+                            <span className="li-value">عن بعد (Zoom)</span>
                         </div>
                     </div>
 
                     <div className="l-action">
-                        <Link to="/program-details" className="btn-lumine">
-                            احجز مكاني <span>←</span>
+                        <Link to={`/program-details/${featuredCourse.slug}`} className="btn-lumine">
+                            اكتشفي المزيد <span>←</span>
                         </Link>
                     </div>
                 </div>
                 <div className="lumine-media">
                     <div className="l-frame">
-                        <img src="./program-bg.jpg" alt="Experience" className="l-img" />
+                        <img src={featuredCourse.hero.image} alt={featuredCourse.hero.title} className="l-img" />
                         <div className="l-frame-accent"></div>
                     </div>
                 </div>

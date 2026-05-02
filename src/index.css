@@ -763,11 +763,12 @@ TRUST BAR
 }
 
 .li-label {
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--gold-dark);
-    margin-bottom: 5px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--gold);
+    margin-bottom: 8px;
+    display: block;
 }
 
 .li-value {

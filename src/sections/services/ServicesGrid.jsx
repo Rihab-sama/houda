@@ -2,72 +2,36 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Tag, MapPin, ArrowLeft, LayoutGrid, List } from 'lucide-react';
 
-// ─── DATA ─────────────────────────────────────────────────────────────────────
-const ALL_SERVICES = [
-  {
-    id: 1, title: 'كوتشينج فردي',
-    tag: 'وضوح',
-    description: 'وضح أهدافك، وتجاوز عوائقك وامضِ قدماً بثقة مطلقة بفضل متابعة مخصصة.',
-    image: '/service-seances.png', category: 'coaching',
-    price: '0 درهم', location: 'عبر الإنترنت',
-  },
-  {
-    id: 2, title: 'كوتشينج جماعي',
-    tag: 'حلقة',
-    description: "ابنِ رؤيتك بالتعاون مع مجموعة داعمة ومغيرة.",
-    image: '/service-seances.png', category: 'coaching',
-    price: '0 درهم', location: 'عبر الإنترنت',
-  },
-  {
-    id: 3, title: 'برنامج VIP لمدة 3 أشهر',
-    tag: 'نخبة',
-    description: "اتصال عميق، انسجام وعمل — لأولئك الذين يختارون التميز.",
-    image: '/service-seances.png', category: 'coaching',
-    price: '8 درهم', location: 'عبر الإنترنت',
-  },
-  {
-    id: 4, title: 'تأمل موجه',
-    tag: 'سكينة',
-    description: 'ثبّت جسدك، وهدئ عقلك، وازرع سلاماً داخلياً مستداماً يومياً.',
-    image: '/service-meditation.png', category: 'meditation',
-    price: '0 درهم', location: 'عبر الإنترنت',
-  },
-  {
-    id: 5, title: 'خلوة اليقظة الذهنية',
-    tag: 'انغماس',
-    description: "يومان لتجديد الطاقة، والتخلي عن الضغوط، والعودة إلى الجوهر بعيداً عن الروتين اليومي.",
-    image: '/service-meditation.png', category: 'meditation',
-    price: '0 درهم', location: 'عبر الإنترنت',
-  },
-  {
-    id: 6, title: 'طقس الصباح الصوتي',
-    tag: 'طاقة',
-    description: 'طقس موجه لبدء كل يوم بنية وطاقة إيجابية.',
-    image: '/service-meditation.png', category: 'meditation',
-    price: '90 درهم', location: 'عبر الإنترنت',
-  },
-  {
-    id: 7, title: "التميز الأنثوي",
-    tag: 'ماستركلاس',
-    description: 'جسدي قيادتك الطبيعية وأشعي في جميع مجالات حياتك.',
-    image: '/service-cours.png', category: 'courses',
-    price: '0 درهم', location: 'عبر الإنترنت',
-  },
-  {
-    id: 8, title: 'دورة تدريبية لمدة 8 أسابيع',
-    tag: 'تطور',
-    description: 'أعد برمجة معتقداتك المقيدة واصنع أنماطاً ناجحة جديدة.',
-    image: '/service-cours.png', category: 'courses',
-    price: '0 درهم', location: 'عبر الإنترنت',
-  },
-  {
-    id: 9, title: 'ماستركلاس الثقة',
-    tag: 'هرموني',
-    description: 'طوّر تأثيرك الشخصي والمهني في 3 ساعات مكثفة.',
-    image: '/service-cours.png', category: 'courses',
-    price: '0 درهم', location: 'عبر الإنترنت',
-  },
-];
+import programsData from '../../data/programs.json';
+import coursesData from '../../data/courses.json';
+
+// ─── DATA & SORTING ───────────────────────────────────────────────────────────
+const rawServices = [...programsData, ...coursesData];
+
+const ALL_SERVICES = rawServices
+  .sort((a, b) => {
+    // 1. Featured items first
+    if (a.isFeatured && !b.isFeatured) return -1;
+    if (!a.isFeatured && b.isFeatured) return 1;
+
+    // 2. Coaching (Private Sessions) come after featured
+    if (a.category === 'coaching' && b.category !== 'coaching') return -1;
+    if (a.category !== 'coaching' && b.category === 'coaching') return 1;
+
+    // 3. For the same category (like courses), sort by ID descending
+    return b.id.localeCompare(a.id);
+  })
+  .map(item => ({
+    id: item.id,
+    slug: item.slug,
+    title: item.hero.title,
+    tag: item.hero.tag.split(' // ')[0], 
+    description: item.hero.description,
+    image: item.hero.image,
+    category: item.category,
+    price: item.hero.stats.price,
+    location: item.hero.stats.format
+  }));
 
 const FILTERS = [
   { key: 'all', label: 'جميع الخدمات' },
@@ -95,7 +59,7 @@ const handleCardMouseLeave = (card) => {
 // ─── CARD COMPONENT ──────────────────────────────────────────────────────────
 const ServiceCard = ({ service }) => (
   <motion.a
-    href="/program-details"
+    href={`/program-details/${service.slug}`}
     className="atlas-card-mini"
     onMouseMove={(e) => handleCardMouseMove(e, e.currentTarget)}
     onMouseLeave={(e) => handleCardMouseLeave(e.currentTarget)}
@@ -107,14 +71,28 @@ const ServiceCard = ({ service }) => (
     </div>
 
     <div className="card-info">
-      <span className="card-kicker">{service.tag}</span>
-      <h3 className="card-title-mini">{service.title}</h3>
+      <div className="card-top-info">
+        <span className="card-kicker">{service.tag}</span>
+        <h3 className="card-title-mini">{service.title}</h3>
+      </div>
 
-      <div className="card-footer">
-        <span className="card-price">{service.price}</span>
+      <div className="card-footer-wrap">
+        <div className="card-price-tag" style={{ alignItems: 'flex-start', textAlign: 'right' }}>
+            <span className="price-label">الاستثمار:</span>
+            <div className="price-stack" style={{ direction: 'ltr', textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                {service.price.includes('DH') ? (
+                    <>
+                        <span className="price-amount" style={{ fontSize: '1.4rem' }}>{service.price.split('DH')[0]} DH</span>
+                        <span className="price-amount-secondary" style={{ color: 'var(--gold)', fontSize: '0.9rem', fontWeight: 600, opacity: 0.8, display: 'block', marginTop: '2px' }}>{service.price.split('DH')[1]}</span>
+                    </>
+                ) : (
+                    <span className="price-amount">{service.price}</span>
+                )}
+            </div>
+        </div>
         <div className="card-btn-cta">
           <span>اكتشف المزيد</span>
-          <ArrowLeft size={14} />
+          <ArrowLeft size={16} />
         </div>
       </div>
     </div>
@@ -340,76 +318,94 @@ const ServicesGrid = () => {
         /* ── Mini Card ── */
         .atlas-card-mini {
           position: relative;
-          aspect-ratio: 4 / 5.2;
-          border-radius: 8px;
+          aspect-ratio: 4 / 5.5;
+          border-radius: 16px;
           overflow: hidden;
           background: #0d0616;
           cursor: pointer;
-          transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+          transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+          border: 1px solid rgba(220, 160, 17, 0.1);
         }
         .atlas-card-mini:hover { 
           transform: translateY(-12px);
-          box-shadow: 0 30px 60px rgba(13,6,22,0.4); 
+          border-color: rgba(220, 160, 17, 0.3);
+          box-shadow: 0 40px 80px rgba(13,6,22,0.5); 
         }
 
         .card-bg-wrap { position: absolute; inset: 0; z-index: 1; }
         .card-img {
           width: 100%; height: 100%; object-fit: cover;
-          opacity: 0.9; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+          opacity: 0.8; transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .atlas-card-mini:hover .card-img { transform: scale(1.1); }
+        .atlas-card-mini:hover .card-img { transform: scale(1.1); opacity: 0.6; }
         .card-gradient {
           position: absolute; inset: 0;
           background: linear-gradient(to top, 
-            rgba(13,6,22,0.95) 0%,
-            rgba(13,6,22,0.4) 40%,
-            rgba(13,6,22,0) 100%
+            rgba(13,6,22,1) 0%,
+            rgba(13,6,22,0.8) 20%,
+            rgba(13,6,22,0.2) 60%,
+            transparent 100%
           );
         }
 
         .card-info {
           position: relative; z-index: 2;
-          height: 100%; display: flex; flex-direction: column; justify-content: flex-end;
-          padding: 20px;
+          height: 100%; display: flex; flex-direction: column; justify-content: space-between;
+          padding: 30px;
         }
         .card-kicker {
-          font-size: 0.5rem; font-weight: 800; letter-spacing: 3px;
-          text-transform: uppercase; color: var(--gold);
-          margin-bottom: 6px; display: block; opacity: 0.9;
+          font-size: 0.7rem; 
+          font-weight: 800; 
+          letter-spacing: 1px;
+          text-transform: uppercase; 
+          color: var(--gold);
+          margin-bottom: 16px; 
+          display: inline-flex;
+          padding: 6px 12px;
+          background: rgba(220, 160, 17, 0.1);
+          border: 1px solid rgba(220, 160, 17, 0.2);
+          border-radius: 4px;
+          backdrop-filter: blur(4px);
         }
         .card-title-mini {
           font-family: var(--font-sans);
-          font-size: 1.05rem; font-weight: 800;
-          color: white; line-height: 1.1; margin-bottom: 12px;
-          letter-spacing: -0.2px;
+          font-size: 1.6rem; font-weight: 800;
+          color: white; line-height: 1.2;
+          letter-spacing: -0.5px;
         }
-        .card-footer {
-          display: flex; justify-content: space-between; align-items: center;
-          padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1);
+        .card-footer-wrap {
+          display: flex; flex-direction: column; gap: 20px;
+          padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);
         }
-        .card-price { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.8); }
+        
+        .card-price-tag { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; text-align: right; }
+        .price-label { font-size: 0.65rem; color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .price-amount { 
+            font-size: 1.25rem; 
+            font-weight: 800; 
+            color: white; 
+            letter-spacing: 0.5px;
+            direction: ltr; /* Fix for currency/number flipping */
+            display: block;
+        }
+
         .card-btn-cta {
           display: flex;
           align-items: center;
-          gap: 8px;
-          padding: 6px 14px;
+          justify-content: center;
+          gap: 12px;
+          padding: 14px 20px;
           background: var(--gold);
           color: var(--purple-deep);
-          border-radius: 50px;
-          font-size: 0.68rem;
+          border-radius: 8px;
+          font-size: 0.8rem;
           font-weight: 800;
           text-decoration: none;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 4px 15px rgba(220, 160, 17, 0.15);
         }
-        .card-btn-cta span { margin-top: 2px; }
         .card-btn-cta:hover {
           background: white;
-          transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        .atlas-card-mini:hover .card-btn-cta { 
-           /* Optional: scale up slightly */
+          transform: scale(1.02);
         }
 
         /* Responsive */
