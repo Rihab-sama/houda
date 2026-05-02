@@ -26,7 +26,7 @@ const ServicesHarmony = () => {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="card-image-wrap">
-                            <img src="./service-seances.png" alt="مرافقة عبر الإنترنت" />
+                            <img src="/service-seances.png" alt="مرافقة عبر الإنترنت" />
                         </div>
                         <div className="card-glass-content">
                             <span className="card-num">01 / مرافقة فردية</span>
@@ -49,7 +49,7 @@ const ServicesHarmony = () => {
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
                             <div className="card-image-wrap">
-                                <img src="./service-cours.png" alt="دورات ماستركلاس" />
+                                <img src="/service-cours.png" alt="دورات ماستركلاس" />
                             </div>
                             <div className="card-glass-content">
                                 <span className="card-num">02 / دورات تعليمية</span>
@@ -70,7 +70,7 @@ const ServicesHarmony = () => {
                             transition={{ duration: 0.8, delay: 0.4 }}
                         >
                             <div className="card-image-wrap">
-                                <img src="./service-meditation.png" alt="فضاء التأمل" />
+                                <img src="/service-meditation.png" alt="فضاء التأمل" />
                             </div>
                             <div className="card-glass-content">
                                 <span className="card-num">03 / فضاء السكينة</span>
