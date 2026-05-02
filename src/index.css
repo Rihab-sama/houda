@@ -1807,7 +1807,8 @@ SECTION 4: SERVICES HARMONY — FIDELITY DESIGN
                 rgba(255, 255, 255, 0.2) 100%);
     }
 
-    .card-large, .card-medium {
+    .card-large,
+    .card-medium {
         min-height: 300px;
     }
 
@@ -3443,4 +3444,302 @@ LUX GALLERY / MINIMALIST AURA DESIGN SYSTEM
     padding-bottom: 5px;
     margin-bottom: 25px;
     display: inline-block;
+}
+
+/* --- Section: Testimonials --- */
+.testimonials-section {
+    background-color: var(--bg-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.testimonials-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--midnight);
+    margin-bottom: 25px;
+}
+
+.testimonials-subtitle {
+    font-size: 1.2rem;
+    color: rgba(45, 18, 68, 0.6);
+    max-width: 700px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+.reviews-masonry {
+    column-count: 3;
+    column-gap: 30px;
+    padding: 20px 0;
+}
+
+.review-card {
+    break-inside: avoid;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-premium);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    background: white;
+    border: 1px solid rgba(220, 160, 17, 0.1);
+}
+
+.review-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 40px 80px rgba(45, 18, 68, 0.12);
+}
+
+.review-img-wrapper {
+    position: relative;
+    line-height: 0;
+}
+
+.review-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(10%) contrast(105%);
+    transition: filter 0.4s ease;
+}
+
+.review-card:hover .review-img {
+    filter: grayscale(0%) contrast(100%);
+}
+
+.testimonials-action {
+    text-align: center;
+    margin-top: 60px;
+}
+
+@media (max-width: 991px) {
+    .reviews-masonry {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .reviews-masonry {
+        column-count: 1;
+    }
+
+    .testimonials-title {
+        font-size: 2.2rem;
+    }
+}
+/* --- Section: Testimonials (Classic Slider) --- */
+.slider-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slider-item {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.slider-card {
+    background: white;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.02);
+    max-width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: var(--gold);
+    width: 25px;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .slider-card {
+        height: 450px;
+    }
+}
+
+.slider-track-wrapper {
+    display: flex;
+    justify-content: center;
+    min-height: 600px;
+}
+
+@media (max-width: 768px) {
+    .slider-track-wrapper {
+        min-height: 450px;
+    }
+}
+
+/* --- Adjusting Slider Size --- */
+.slider-container {
+    max-width: 600px; /* ????? ????? ????? */
+}
+
+.slider-card {
+    height: 450px; /* ????? ????? */
+    padding: 10px;
+}
+
+.slider-track-wrapper {
+    min-height: 450px;
+} 
+
+/* --- Section: Testimonials (Infinite Single Row) --- */
+.infinite-horizontal-wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding: 40px 0;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.horizontal-track {
+    display: flex;
+    gap: 25px;
+    width: max-content;
+}
+
+.horizontal-card {
+    height: 400px; /* ??? ???? ??? ???? */
+    border-radius: 16px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.02);
+    transition: transform 0.3s ease;
+}
+
+.horizontal-card:hover {
+    transform: scale(1.05);
+    z-index: 5;
+}
+
+.horizontal-img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    padding: 5px;
+}
+
+@media (max-width: 768px) {
+    .horizontal-card {
+        height: 300px;
+    }
+}
+
+/* --- Section: Testimonials (Pure Ticker Style) --- */
+.testimonials-ticker-section {
+    padding: 60px 0;
+    background: #ffffff;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+    direction: ltr;
+}
+
+.testimonials-ticker-container {
+    display: flex;
+    width: 100%;
+}
+
+.testimonials-ticker-track {
+    display: flex;
+    gap: 50px;
+    white-space: nowrap;
+    animation: marquee-testimonials 100s linear infinite;
+    width: fit-content;
+    align-items: center;
+}
+
+@keyframes marquee-testimonials {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.testimonial-ticker-item {
+    flex: 0 0 auto;
+}
+
+.ticker-img-pure {
+    height: 380px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    transition: transform 0.4s ease;
+    background: white;
+}
+
+.ticker-img-pure:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.testimonials-ticker-section .ticker-fade-left, 
+.testimonials-ticker-section .ticker-fade-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.testimonials-ticker-section .ticker-fade-left {
+    left: 0;
+    background: linear-gradient(to right, #ffffff, transparent);
+}
+
+.testimonials-ticker-section .ticker-fade-right {
+    right: 0;
+    background: linear-gradient(to left, #ffffff, transparent);
 }
