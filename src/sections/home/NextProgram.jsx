@@ -33,6 +33,13 @@ const NextProgram = () => {
                         <span className="l-serif">{featuredCourse.hero.title.split(' ').slice(1).join(' ')}</span>
                     </h2>
 
+                    <div className="lumine-media">
+                        <div className="l-frame">
+                            <img src={featuredCourse.hero.image} alt={featuredCourse.hero.title} className="l-img" />
+                            <div className="l-frame-accent"></div>
+                        </div>
+                    </div>
+
                     <p className="l-desc">
                         {featuredCourse.hero.tagline}. {featuredCourse.hero.description.slice(0, 150)}...
                     </p>
@@ -53,12 +60,6 @@ const NextProgram = () => {
                         <Link to={`/program-details/${featuredCourse.slug}`} className="btn-lumine">
                             اكتشفي المزيد <span>←</span>
                         </Link>
-                    </div>
-                </div>
-                <div className="lumine-media">
-                    <div className="l-frame">
-                        <img src={featuredCourse.hero.image} alt={featuredCourse.hero.title} className="l-img" />
-                        <div className="l-frame-accent"></div>
                     </div>
                 </div>
             </div>

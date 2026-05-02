@@ -21,20 +21,22 @@ const AboutMe = () => {
                     </div>
 
                     <div className="avant-content">
-                        <div className="node-manifesto">
-                            {/* التصميم الجديد المماثل للهيرو */}
+                        <div className="node-header">
                             <div className="zenith-meta" style={{ marginBottom: '20px', justifyContent: 'flex-start' }}>
                                 <span className="meta-line"></span>
                                 <span className="meta-text">من أنا</span>
                             </div>
-                            
+
                             <h2 className="avant-title">
                                 هدى
                                 <span className="title-accent">أبــــــحمان</span>
                             </h2>
+                        </div>
+
+                        <div className="node-manifesto">
                             <p>أنا هدى، لايف كوتش أرافقك لاكتشاف قوتك الداخلية وتحقيق توازن حقيقي في حياتك.
                                 أساعدك على التحرر من التوتر والضغوط، وبناء ثقة راسخة بنفسك، من خلال برامج عملية تُحدث تغييراً ملموساً في حياتك.</p>
-                            
+
                             <div className="stat-grid-v3">
                                 <div className="stat-item-v3">
                                     <span className="sv3-num">+500</span>

@@ -658,20 +658,95 @@ TRUST BAR
 
 .lumine-container {
     max-width: 1300px;
-    /* Slightly narrower */
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    /* Reduced gap */
     padding: 0 5%;
 }
 
+
 /* Content Side */
 .lumine-content {
-    flex: 1;
-    max-width: 600px;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    grid-template-areas:
+        "meta media"
+        "title media"
+        "desc media"
+        "info media"
+        "action media";
+    gap: 0 80px;
+    align-items: center;
 }
+
+.zenith-meta {
+    grid-area: meta;
+}
+
+.l-title {
+    grid-area: title;
+}
+
+.lumine-media {
+    grid-area: media;
+    width: 100%;
+}
+
+.l-desc {
+    grid-area: desc;
+    max-width: 480px;
+}
+
+.l-info-bar {
+    grid-area: info;
+}
+
+.l-action {
+    grid-area: action;
+}
+
+@media (max-width: 991px) {
+    .lumine-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0;
+        width: 100%;
+    }
+
+    .lumine-media {
+        margin: 20px 0 40px;
+        max-width: 450px;
+        width: 100%;
+    }
+
+    .l-title {
+        font-size: 2.2rem;
+        margin-bottom: 25px;
+    }
+
+    .l-desc {
+        max-width: 100% !important;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 0.95rem;
+    }
+
+    .l-info-bar {
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+        flex-wrap: wrap;
+        border-top: 1px solid rgba(181, 132, 11, 0.1);
+        border-bottom: 1px solid rgba(181, 132, 11, 0.1);
+        padding: 15px 0;
+    }
+
+    .btn-lumine {
+        padding: 15px 30px;
+        font-size: 0.75rem;
+    }
+}
+
 
 .l-folio {
     font-family: var(--font-sans);
@@ -892,8 +967,7 @@ TRUST BAR
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 30px;
-    /* Reduced from 50px */
+    gap: 50px;
     position: relative;
 }
 
@@ -928,8 +1002,6 @@ TRUST BAR
     position: relative;
     z-index: 5;
 }
-
-
 
 .architect-frame {
     position: relative;
@@ -1040,6 +1112,55 @@ TRUST BAR
     margin-bottom: 10px;
     /* Further reduced */
 }
+
+@media (max-width: 1100px) {
+    .avant-layout {
+        flex-direction: column;
+        text-align: center;
+        gap: 80px;
+    }
+
+    .avant-focal-point {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .node-quote {
+        padding-left: 0;
+        padding-top: 20px;
+    }
+
+    .node-quote::before {
+        width: 100%;
+        height: 1px;
+        top: 0;
+        background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+
+    .stat-grid-v3 {
+        justify-content: center;
+    }
+
+    .btn-experimental {
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-avant-garde {
+        padding: 60px 0;
+    }
+
+    .avant-title {
+        font-size: 3rem;
+    }
+
+    .vertical-label {
+        display: none;
+    }
+}
+
 
 .node-tag {
     color: var(--gold-light);
@@ -1261,41 +1382,101 @@ TRUST BAR
 /* RESPONSIVE AVANT-GARDE */
 @media (max-width: 1100px) {
     .avant-layout {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr;
         text-align: center;
-        gap: 80px;
+        gap: 30px;
+    }
+
+    .avant-content {
+        display: contents;
+    }
+
+    .node-header {
+        order: 1;
+        margin-bottom: 10px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .avant-title {
+        text-align: center;
+        width: 100%;
+    }
+
+    .avant-title .title-accent {
+        margin-right: 0;
+        text-align: center;
+    }
+
+    .avant-title::after {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
     }
 
     .avant-focal-point {
-        flex: 0 0 auto;
+        order: 2;
         width: 100%;
-        max-width: 400px;
+        max-width: 380px;
+        margin: 0 auto;
+    }
+
+    .node-manifesto {
+        order: 3;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .node-manifesto p {
+        font-size: 1.05rem;
+        padding: 0 10px;
+        text-align: center;
     }
 
     .node-quote {
-        padding-left: 0;
-        padding-top: 20px;
+        order: 4;
+        padding: 40px 0 0 0;
+        margin-top: 20px;
     }
 
     .node-quote::before {
-        width: 100%;
-        height: 1px;
+        width: 80px;
+        height: 2px;
         top: 0;
-        background: linear-gradient(to right, transparent, var(--gold), transparent);
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--gold);
     }
 
     .stat-grid-v3 {
         justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin: 25px 0;
+    }
+
+    .stat-item-v3 {
+        min-width: 90px;
+    }
+
+    .node-action {
+        order: 5;
+        margin-top: 20px;
     }
 
     .btn-experimental {
         align-items: center;
     }
+
+    .zenith-meta {
+        justify-content: center !important;
+    }
 }
 
 @media (max-width: 768px) {
     .about-avant-garde {
-        padding: 120px 0;
+        padding: 60px 0;
     }
 
     .avant-title {
@@ -1304,6 +1485,30 @@ TRUST BAR
 
     .vertical-label {
         display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-avant-garde {
+        padding: 50px 0;
+    }
+
+    .avant-title {
+        font-size: 2.2rem;
+    }
+
+    .stat-grid-v3 {
+        gap: 10px;
+    }
+
+    .sv3-num {
+        font-size: 1.2rem;
+    }
+
+    .signature-overlay {
+        font-size: 3.5rem;
+        right: 0 !important;
+        bottom: -15px !important;
     }
 }
 
@@ -1571,25 +1776,77 @@ SECTION 4: SERVICES HARMONY — FIDELITY DESIGN
 @media (max-width: 1100px) {
     .harmony-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
 
     .card-large {
-        min-height: 500px;
+        min-height: 420px;
     }
 }
 
 @media (max-width: 768px) {
     .harmony-section {
-        padding: 80px 0;
+        padding: 60px 0;
+    }
+
+    .harmony-header {
+        margin-bottom: 50px;
+    }
+
+    .harmony-main-title {
+        font-size: 2.2rem;
     }
 
     .card-glass-content {
-        padding: 40px;
-        background: rgba(255, 255, 255, 0.9);
+        padding: 20px 15px;
+        align-items: center;
+        text-align: center;
+        background: linear-gradient(to top,
+                rgba(255, 255, 255, 0.98) 0%,
+                rgba(255, 255, 255, 0.9) 70%,
+                rgba(255, 255, 255, 0.2) 100%);
     }
 
-    .card-large {
-        min-height: auto;
+    .card-large, .card-medium {
+        min-height: 300px;
+    }
+
+    .card-desc {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 0.85rem;
+        margin-bottom: 20px;
+    }
+
+    .card-btn-primary {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 12px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .harmony-section {
+        padding: 50px 0;
+    }
+
+    .harmony-main-title {
+        font-size: 1.8rem;
+    }
+
+    .card-glass-content {
+        padding: 15px 10px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .card-btn-primary {
+        padding: 14px 30px;
+        font-size: 0.7rem;
+        width: 100%;
+        justify-content: center;
     }
 }
 
