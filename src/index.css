@@ -3532,6 +3532,7 @@ LUX GALLERY / MINIMALIST AURA DESIGN SYSTEM
         font-size: 2.2rem;
     }
 }
+
 /* --- Section: Testimonials (Classic Slider) --- */
 .slider-container {
     position: relative;
@@ -3559,8 +3560,8 @@ LUX GALLERY / MINIMALIST AURA DESIGN SYSTEM
     background: white;
     border-radius: 20px;
     padding: 15px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.06);
-    border: 1px solid rgba(0,0,0,0.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.02);
     max-width: 100%;
     height: 600px;
     display: flex;
@@ -3617,17 +3618,19 @@ LUX GALLERY / MINIMALIST AURA DESIGN SYSTEM
 
 /* --- Adjusting Slider Size --- */
 .slider-container {
-    max-width: 600px; /* ????? ????? ????? */
+    max-width: 600px;
+    /* ????? ????? ????? */
 }
 
 .slider-card {
-    height: 450px; /* ????? ????? */
+    height: 450px;
+    /* ????? ????? */
     padding: 10px;
 }
 
 .slider-track-wrapper {
     min-height: 450px;
-} 
+}
 
 /* --- Section: Testimonials (Infinite Single Row) --- */
 .infinite-horizontal-wrapper {
@@ -3646,12 +3649,13 @@ LUX GALLERY / MINIMALIST AURA DESIGN SYSTEM
 }
 
 .horizontal-card {
-    height: 400px; /* ??? ???? ??? ???? */
+    height: 400px;
+    /* ??? ???? ??? ???? */
     border-radius: 16px;
     overflow: hidden;
     background: white;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border: 1px solid rgba(0,0,0,0.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.02);
     transition: transform 0.3s ease;
 }
 
@@ -3695,14 +3699,18 @@ LUX GALLERY / MINIMALIST AURA DESIGN SYSTEM
     display: flex;
     gap: 50px;
     white-space: nowrap;
-    animation: marquee-testimonials 100s linear infinite;
     width: fit-content;
     align-items: center;
 }
 
 @keyframes marquee-testimonials {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 .testimonial-ticker-item {
@@ -3714,7 +3722,7 @@ LUX GALLERY / MINIMALIST AURA DESIGN SYSTEM
     width: auto;
     object-fit: contain;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
     transition: transform 0.4s ease;
     background: white;
 }
@@ -3724,7 +3732,7 @@ LUX GALLERY / MINIMALIST AURA DESIGN SYSTEM
     z-index: 10;
 }
 
-.testimonials-ticker-section .ticker-fade-left, 
+.testimonials-ticker-section .ticker-fade-left,
 .testimonials-ticker-section .ticker-fade-right {
     position: absolute;
     top: 0;
@@ -3742,4 +3750,105 @@ LUX GALLERY / MINIMALIST AURA DESIGN SYSTEM
 .testimonials-ticker-section .ticker-fade-right {
     right: 0;
     background: linear-gradient(to left, #ffffff, transparent);
+}
+
+/* --- Professional Improvements for Ticker --- */
+.testimonials-ticker-section {
+    background: linear-gradient(to bottom, #ffffff, #fcfaf7, #ffffff);
+    padding: 100px 0;
+}
+
+.ticker-title-wrapper {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.ticker-mini-title {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    font-weight: 700;
+    margin-bottom: 15px;
+    display: block;
+    opacity: 0.7;
+}
+
+.ticker-main-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--midnight);
+    font-style: italic;
+}
+
+.testimonials-ticker-track:hover {
+    animation-play-state: paused;
+    /* ???? ?????? ??? ????? */
+}
+
+.ticker-img-pure {
+    box-shadow: 0 20px 40px rgba(45, 18, 68, 0.06);
+    border: 1px solid rgba(220, 160, 17, 0.05);
+    transform: translateZ(0);
+    /* ????? ???? ?????? */
+}
+
+/* --- Luxury Premium Ticker Styles --- */
+.testimonials-ticker-section {
+    background: radial-gradient(circle at 10% 20%, rgba(220, 160, 17, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(45, 18, 68, 0.02) 0%, transparent 50%);
+    padding: 140px 0;
+    position: relative;
+}
+
+.ticker-mini-title {
+    background: var(--gold-shimmer);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 6px;
+    margin-bottom: 20px;
+}
+
+.ticker-main-title {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.2;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+}
+
+.ticker-img-pure {
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(45, 18, 68, 0.08);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* ????? ??????? ?????? */
+.testimonial-ticker-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.testimonial-ticker-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: skewX(-25deg);
+    transition: 0.8s;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.testimonial-ticker-item:hover::after {
+    left: 150%;
+    transition: 0.8s;
 }
