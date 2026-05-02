@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const faqData = [
     {
@@ -37,21 +36,13 @@ const FAQItem = ({ question, answer, isOpen, toggle }) => {
                         </svg>
                     </div>
                 </button>
-                <AnimatePresence>
-                    {isOpen && (
-                        <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                            className="faq-answer-wrap"
-                        >
-                            <div className="faq-a-text" style={{ textAlign: 'right' }}>
-                                {answer}
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                {isOpen && (
+                    <div className="faq-answer-wrap">
+                        <div className="faq-a-text" style={{ textAlign: 'right' }}>
+                            {answer}
+                        </div>
+                    </div>
+                )}
             </div>
             <div className="faq-item-glow"></div>
         </div>
@@ -69,7 +60,7 @@ const FAQ = () => {
             </div>
 
             <div className="faq-liquid-container">
-                <div className="faq-liquid-header reveal">
+                <div className="faq-liquid-header">
                     <span className="faq-pretitle">المساعدة والوضوح</span>
                     <h2 className="faq-liquid-title">
                         إجابات لارتقائك
@@ -89,7 +80,7 @@ const FAQ = () => {
                     ))}
                 </div>
 
-                <div className="faq-footer-action reveal delay-3">
+                <div className="faq-footer-action">
                     <p>هل لديك أسئلة أخرى؟</p>
                     <a href="#contact" className="glow-link">اتصل بي مباشرة</a>
                 </div>
