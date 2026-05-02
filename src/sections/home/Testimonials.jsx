@@ -23,10 +23,22 @@ const Testimonials = ({ isCompact = false }) => {
 
   const repeatedTestimonials = [...testimonials, ...testimonials];
 
-  useEffect(() => {
+  const updateWidth = () => {
     if (trackRef.current) {
       setTrackWidth(trackRef.current.scrollWidth / 2);
     }
+  };
+
+  useEffect(() => {
+    updateWidth();
+    // Extra check after a short delay to ensure layout is settled
+    const timer = setTimeout(updateWidth, 1000);
+    
+    window.addEventListener('resize', updateWidth);
+    return () => {
+      window.removeEventListener('resize', updateWidth);
+      clearTimeout(timer);
+    };
   }, []);
 
   useAnimationFrame((t, delta) => {
@@ -90,6 +102,7 @@ const Testimonials = ({ isCompact = false }) => {
                 alt="Review"
                 className={`ticker-img-pure ${isCompact ? 'small-img' : ''}`}
                 draggable="false"
+                onLoad={updateWidth}
               />
             </div>
           ))}
