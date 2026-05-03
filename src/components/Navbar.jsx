@@ -81,9 +81,9 @@ const Navbar = () => {
         <nav className={`navbar glass-nav ${isScrolled ? 'scrolled' : ''} ${isMobileMenuOpen ? 'menu-open' : ''}`}>
             <div className="nav-container">
                 <Link to="/" className="logo" onClick={() => setIsMobileMenuOpen(false)}>
-                    <span className="logo-icon">✶</span> Houda Harmony
+                    <img src="/logo-premium.png" alt="Houda Harmony" className="logo-img" />
                 </Link>
-                
+
                 <ul className="nav-links">
                     <li>
                         {isHome ? (
@@ -141,8 +141,8 @@ const Navbar = () => {
 
                 <div className="nav-actions">
                     <Link to="/services" className="btn btn-nav desktop-only">احجز جلسة <span>←</span></Link>
-                    
-                    <button 
+
+                    <button
                         className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         aria-label="Menu"

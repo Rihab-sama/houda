@@ -35,27 +35,35 @@
 }
 
 .nav-container {
-    padding: 12px 35px 12px 25px;
+    padding: 0 35px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100px; /* Adjusted height for a cleaner look */
 }
 
 .logo {
-    font-family: var(--font-sans);
-    font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 800;
-    color: var(--navy-dark);
     display: flex;
     align-items: center;
-    gap: 8px;
-    letter-spacing: -0.5px;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
-.logo-icon {
-    color: var(--gold);
-    font-size: 1.4rem;
+.logo-img {
+    height: 100%; /* Fill the container height perfectly */
+    width: auto;
+    object-fit: contain;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: block;
+}
+
+.navbar.scrolled .logo-img {
+    height: 80%; /* Slightly smaller when scrolled for elegance */
+}
+
+.navbar.scrolled .nav-container {
+    height: 70px;
 }
 
 .nav-links {
@@ -176,7 +184,8 @@
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     z-index: 999;
-    display: none; /* Hidden by default on desktop */
+    display: none;
+    /* Hidden by default on desktop */
     align-items: center;
     justify-content: center;
     transform: translateX(100%);
@@ -184,7 +193,8 @@
 }
 
 .mobile-menu.active {
-    display: flex; /* Show only when active */
+    display: flex;
+    /* Show only when active */
     transform: translateX(0);
 }
 
@@ -232,10 +242,12 @@
 }
 
 @media (max-width: 950px) {
-    .nav-links, .desktop-only {
+
+    .nav-links,
+    .desktop-only {
         display: none !important;
     }
-    
+
     .hamburger {
         display: flex;
     }
@@ -243,7 +255,7 @@
     .nav-container {
         padding: 12px 20px;
     }
-    
+
     .logo {
         font-size: 1.1rem;
     }
@@ -338,19 +350,15 @@
 }
 
 .footer-logo-premium {
-    font-size: 1.6rem;
-    font-weight: 900;
-    letter-spacing: -1px;
-    margin-bottom: 15px;
-    color: var(--purple-deep);
+    margin-bottom: 25px;
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
-.logo-symbol {
-    color: var(--gold-dark);
-    font-size: 1.3rem;
+.footer-logo-img {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
 }
 
 .footer-manifesto {
@@ -492,4 +500,3 @@
         text-align: center;
     }
 }
-
