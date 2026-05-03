@@ -4,10 +4,22 @@ import { useLenis } from 'lenis/react';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
     const location = useLocation();
     const lenis = useLenis();
     const isHome = location.pathname === '/';
+
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isMobileMenuOpen]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -45,6 +57,7 @@ const Navbar = () => {
 
     const scrollToSection = (e, id) => {
         e.preventDefault();
+        setIsMobileMenuOpen(false);
         const el = document.getElementById(id);
         if (el) {
             if (lenis) {
@@ -65,11 +78,12 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`navbar glass-nav ${isScrolled ? 'scrolled' : ''}`}>
+        <nav className={`navbar glass-nav ${isScrolled ? 'scrolled' : ''} ${isMobileMenuOpen ? 'menu-open' : ''}`}>
             <div className="nav-container">
-                <Link to="/" className="logo">
+                <Link to="/" className="logo" onClick={() => setIsMobileMenuOpen(false)}>
                     <span className="logo-icon">✶</span> Houda Harmony
                 </Link>
+                
                 <ul className="nav-links">
                     <li>
                         {isHome ? (
@@ -123,9 +137,55 @@ const Navbar = () => {
                             <Link to="/#faq">الأسئلة</Link>
                         )}
                     </li>
-
                 </ul>
-                <Link to="/services" className="btn btn-nav">احجز جلسة <span>←</span></Link>
+
+                <div className="nav-actions">
+                    <Link to="/services" className="btn btn-nav desktop-only">احجز جلسة <span>←</span></Link>
+                    
+                    <button 
+                        className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        aria-label="Menu"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+
+            {/* Mobile Menu Overlay */}
+            <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+                <div className="mobile-menu-content">
+                    <ul className="mobile-nav-links">
+                        <li>
+                            {isHome ? (
+                                <a href="#home" onClick={(e) => scrollToSection(e, 'home')}>الرئيسية</a>
+                            ) : (
+                                <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>الرئيسية</Link>
+                            )}
+                        </li>
+                        <li><Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>من أنا</Link></li>
+                        <li><Link to="/services" onClick={() => setIsMobileMenuOpen(false)}>الخدمات</Link></li>
+                        <li>
+                            {isHome ? (
+                                <a href="#testimonials" onClick={(e) => scrollToSection(e, 'testimonials')}>آراء الناس</a>
+                            ) : (
+                                <Link to="/#testimonials" onClick={() => setIsMobileMenuOpen(false)}>آراء الناس</Link>
+                            )}
+                        </li>
+                        <li>
+                            {isHome ? (
+                                <a href="#faq" onClick={(e) => scrollToSection(e, 'faq')}>الأسئلة</a>
+                            ) : (
+                                <Link to="/#faq" onClick={() => setIsMobileMenuOpen(false)}>الأسئلة</Link>
+                            )}
+                        </li>
+                    </ul>
+                    <Link to="/services" className="btn btn-nav mobile-cta" onClick={() => setIsMobileMenuOpen(false)}>
+                        احجز جلسة <span>←</span>
+                    </Link>
+                </div>
             </div>
         </nav>
     );
