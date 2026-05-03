@@ -39,7 +39,7 @@ const AboutMe = () => {
 
                             <div className="stat-grid-v3">
                                 <div className="stat-item-v3">
-                                    <span className="sv3-num">+500</span>
+                                    <span className="sv3-num">+2000</span>
                                     <span className="sv3-label">مستفيد(ة)</span>
                                 </div>
                                 <div className="stat-divider-v3"></div>
