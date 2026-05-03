@@ -98,7 +98,7 @@ const AboutHero = () => {
                             {/* Halo/Aura effect */}
                             <div className="hero-aura"></div>
 
-                            <img src="/houda-celestial.png" alt="Houda" className="celestial-img" />
+                            <img src="/abouthome.jpeg" alt="Houda" className="celestial-img" />
                             <div className="glow-border"></div>
                             <div className="inner-shadow"></div>
                         </div>

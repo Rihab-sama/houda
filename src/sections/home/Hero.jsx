@@ -52,7 +52,7 @@ const Hero = () => {
           className="zenith-portrait-container"
         >
           <div className="portrait-glow"></div>
-          <img src="/hearo.jpeg" className="zenith-img" alt="Houda Abahman" />
+          <img src="/hom.png" className="zenith-img" alt="Houda Abahman" />
         </motion.div>
 
         <motion.div

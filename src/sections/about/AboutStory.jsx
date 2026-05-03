@@ -7,28 +7,28 @@ const AboutStory = () => {
                 <div className="story-premium-island">
                     <div className="story-narrative-centered">
                         <span className="celestial-subtitle">
-                          هدى أبـحـمــان 
+                            هدى أبـحـمــان
                         </span>
-                        
+
                         <div className="celestial-separator">
                             <div className="sep-line"></div>
                             <span className="sep-icon">✦</span>
                             <div className="sep-line"></div>
                         </div>
-                        
+
                         <div className="narrative-content-wrapper">
                             {/* Coach Description */}
                             <div className="coach-description">
                                 <p>
-                                    هدى أبحمان هي كوتش حياة متخصصة في مرافقة الأفراد نحو تحقيق التوازن والتميز. من خلال تقنيات مبتكرة ونهج شمولي، تساعدك على اكتشاف إمكاناتك الكاملة وتحويل حياتك نحو الأفضل، مع التركيز على التناغم بين العقل والجسد. تقدم جلسات التنفس التأملي، التنويم الإيحائي، وتقنيات التحرر الجسدي لمساعدتك على تطوير ذاتك وتحقيق أهدافك 
+                                    هدى أبحمان هي كوتش حياة متخصصة في مرافقة الأفراد نحو تحقيق التوازن والتميز. من خلال تقنيات مبتكرة ونهج شمولي، تساعدك على اكتشاف إمكاناتك الكاملة وتحويل حياتك نحو الأفضل، مع التركيز على التناغم بين العقل والجسد. تقدم جلسات التنفس التأملي، التنويم الإيحائي، وتقنيات التحرر الجسدي لمساعدتك على تطوير ذاتك وتحقيق أهدافك
                                 </p>
                             </div>
 
                             {/* Expertise Domains */}
                             <div className="expertise-grid">
                                 {[
-                                    ' التنويم الإيحائي', 
-                                    'التنفس التأملي', 
+                                    ' التنويم الإيحائي',
+                                    'التنفس التأملي',
                                     'التحرر الجسدي'
                                 ].map((item, index) => (
                                     <div
@@ -53,7 +53,7 @@ const AboutStory = () => {
                                         "ممارِسة معتمدة دوليًا في التنفس التأملي",
                                         "خريجة المركز الدولي للتنمية البشرية"
                                     ].map((cert, index) => (
-                                        <div 
+                                        <div
                                             key={index}
                                             className="cert-item-premium"
                                         >
