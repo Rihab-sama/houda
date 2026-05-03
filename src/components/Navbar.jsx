@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useLenis } from 'lenis/react';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
     const location = useLocation();
+    const lenis = useLenis();
     const isHome = location.pathname === '/';
 
     useEffect(() => {
@@ -20,8 +22,8 @@ const Navbar = () => {
         if (!isHome) return;
 
         const options = {
-            threshold: 0.5,
-            rootMargin: '0px 0px -20% 0px'
+            threshold: 0.2,
+            rootMargin: '-10% 0px -40% 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -32,7 +34,7 @@ const Navbar = () => {
             });
         }, options);
 
-        const sections = ['home', 'services', 'faq'];
+        const sections = ['home', 'services', 'testimonials', 'faq'];
         sections.forEach(id => {
             const el = document.getElementById(id);
             if (el) observer.observe(el);
@@ -45,16 +47,20 @@ const Navbar = () => {
         e.preventDefault();
         const el = document.getElementById(id);
         if (el) {
-            const offset = 80;
-            const bodyRect = document.body.getBoundingClientRect().top;
-            const elementRect = el.getBoundingClientRect().top;
-            const elementPosition = elementRect - bodyRect;
-            const offsetPosition = elementPosition - offset;
+            if (lenis) {
+                lenis.scrollTo(el, { offset: -100 });
+            } else {
+                const offset = 100;
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = el.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                const offsetPosition = elementPosition - offset;
 
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         }
     };
 
@@ -94,6 +100,17 @@ const Navbar = () => {
                             الخدمات
                         </Link>
                     </li>
+                    <li>
+                        {isHome ? (
+                            <a
+                                href="#testimonials"
+                                onClick={(e) => scrollToSection(e, 'testimonials')}
+                                className={activeSection === 'testimonials' ? 'active' : ''}
+                            >آراء الناس</a>
+                        ) : (
+                            <Link to="/#testimonials">آراء الناس</Link>
+                        )}
+                    </li>
 
                     <li>
                         {isHome ? (
@@ -103,18 +120,12 @@ const Navbar = () => {
                                 className={activeSection === 'faq' ? 'active' : ''}
                             >الأسئلة</a>
                         ) : (
-                            <Link to="/">الأسئلة</Link>
+                            <Link to="/#faq">الأسئلة</Link>
                         )}
                     </li>
-                    <li>
-                        <a
-                            href="https://wa.me/212643354739"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >اتصل بي</a>
-                    </li>
+
                 </ul>
-                <a href="https://wa.me/212643354739" target="_blank" rel="noopener noreferrer" className="btn btn-nav">احجز جلسة <span>←</span></a>
+                <Link to="/services" className="btn btn-nav">احجز جلسة <span>←</span></Link>
             </div>
         </nav>
     );

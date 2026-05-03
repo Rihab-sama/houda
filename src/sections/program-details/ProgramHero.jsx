@@ -73,7 +73,7 @@ const ProgramHero = ({ data }) => {
                     </div>
 
                     <div className="hero-action" style={{ marginTop: '40px', display: 'flex', justifyContent: 'center' }}>
-                        <a href="https://wa.me/2126XXXXXXXX" target="_blank" rel="noopener noreferrer" className="btn-register">
+                        <a href="https://wa.me/212661491819" target="_blank" rel="noopener noreferrer" className="btn-register">
                             أسجل الآن <span>←</span>
                         </a>
                     </div>

@@ -80,10 +80,7 @@ const FAQ = () => {
                     ))}
                 </div>
 
-                <div className="faq-footer-action">
-                    <p>هل لديك أسئلة أخرى؟</p>
-                    <a href="#contact" className="glow-link">اتصل بي مباشرة</a>
-                </div>
+
             </div>
         </section>
     );

@@ -52,7 +52,7 @@ const Testimonials = ({ isCompact = false }) => {
   });
 
   return (
-    <section className={`testimonials-ticker-section celestial-theme ${isCompact ? 'compact-mode' : ''}`}>
+    <section id="testimonials" className={`testimonials-ticker-section celestial-theme ${isCompact ? 'compact-mode' : ''}`}>
       {/* CELESTIAL BACKGROUND ELEMENTS */}
       {!isCompact && (
         <div className="celestial-bg-elements">
