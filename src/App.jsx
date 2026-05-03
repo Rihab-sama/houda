@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import ServicesPage from './pages/ServicesPage';
 import ProgramDetails from './pages/ProgramDetails';
 import AboutPage from './pages/AboutPage';
+import LegalPage from './pages/LegalPage';
 
 function App() {
   useEffect(() => {
@@ -45,6 +46,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/program-details/:slug" element={<ProgramDetails />} />
+            <Route path="/legal" element={<LegalPage />} />
           </Routes>
           <Footer />
         </div>
