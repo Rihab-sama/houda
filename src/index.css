@@ -1105,12 +1105,12 @@ TRUST BAR
 
 .frame-svg {
     position: absolute;
-    inset: -30px;
-    width: calc(100% + 60px);
-    height: calc(100% + 60px);
+    inset: -12px;
+    width: calc(100% + 24px);
+    height: calc(100% + 24px);
     z-index: 1;
     pointer-events: none;
-    filter: drop-shadow(0 0 10px rgba(220, 160, 17, 0.2));
+    overflow: visible;
 }
 
 .frame-path {
@@ -1152,11 +1152,19 @@ TRUST BAR
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 2%;
     clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     z-index: 2;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+.architect-frame {
+    position: relative;
+    width: 400px;
+    height: 530px;
+    z-index: 2;
 }
 
 /* Master Signature Overlap */

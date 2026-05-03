@@ -15,7 +15,7 @@ const AboutMe = () => {
                             <svg className="frame-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
                                 <path d="M10,0 L100,0 L90,100 L0,100 Z" fill="none" className="frame-path" />
                             </svg>
-                            <img src="/aboutme.png" alt="Houda Abahman" className="avant-img" />
+                            <img src="/abouthome.jpeg" alt="Houda Abahman" className="avant-img" />
                             <div className="signature-overlay" style={{ left: 'auto', right: '5%', bottom: '-20px' }}>Houda</div>
                         </div>
                     </div>
