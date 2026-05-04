@@ -13,6 +13,7 @@ const testimonials = [
   { id: 9, image: '/T9.jpeg' },
   { id: 10, image: '/T10.jpeg' },
   { id: 11, image: '/T11.jpeg' },
+  { id: 12, image: '/T12.jpeg' },
 ];
 
 const Testimonials = ({ isCompact = false }) => {
