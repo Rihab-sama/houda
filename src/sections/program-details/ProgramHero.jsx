@@ -48,7 +48,7 @@ const ProgramHero = ({ data }) => {
                             <span className="li-label">المدة</span>
                             <span className="li-value">
                                 {data.stats.duration.includes('(') ? (
-                                    <>{data.stats.duration.split('(')[0]} <br/> ({data.stats.duration.split('(')[1]}</>
+                                    <>{data.stats.duration.split('(')[0]} <br /> ({data.stats.duration.split('(')[1]}</>
                                 ) : data.stats.duration}
                             </span>
                         </div>
@@ -57,7 +57,7 @@ const ProgramHero = ({ data }) => {
                             <span className="li-label">الشكل</span>
                             <span className="li-value">
                                 {data.stats.format.includes('(') ? (
-                                    <>{data.stats.format.split('(')[0]} <br/> ({data.stats.format.split('(')[1]}</>
+                                    <>{data.stats.format.split('(')[0]} <br /> ({data.stats.format.split('(')[1]}</>
                                 ) : data.stats.format}
                             </span>
                         </div>
@@ -66,15 +66,15 @@ const ProgramHero = ({ data }) => {
                             <span className="li-label">السعر</span>
                             <span className="li-value" style={{ direction: 'ltr', display: 'inline-block' }}>
                                 {data.stats.price.includes('DH') ? (
-                                    <>{data.stats.price.split('DH')[0]} DH <br/> {data.stats.price.split('DH')[1]}</>
+                                    <>{data.stats.price.split('DH')[0]} DH <br /> {data.stats.price.split('DH')[1]}</>
                                 ) : data.stats.price}
                             </span>
                         </div>
                     </div>
 
                     <div className="hero-action" style={{ marginTop: '40px', display: 'flex', justifyContent: 'center' }}>
-                        <a href="https://wa.me/212661491819" target="_blank" rel="noopener noreferrer" className="btn-register">
-                            أسجل الآن <span>←</span>
+                        <a href="#payment-section" className="btn-register">
+                            سجلي الآن: طرق الدفع <span>←</span>
                         </a>
                     </div>
                 </motion.div>
@@ -96,33 +96,9 @@ const ProgramHero = ({ data }) => {
             </div>
 
             <style>{`
-                .btn-register {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 15px;
-                    padding: 18px 45px;
-                    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-                    color: white;
-                    border-radius: 100px;
-                    font-weight: 700;
-                    font-size: 1.1rem;
-                    letter-spacing: 1px;
-                    text-decoration: none;
-                    box-shadow: 0 15px 35px rgba(181, 132, 11, 0.3);
-                    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-                }
-                .btn-register:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 20px 45px rgba(181, 132, 11, 0.4);
-                    color: white;
-                }
-                .btn-register span {
-                    font-size: 1.3rem;
-                    transition: transform 0.4s ease;
-                }
-                .btn-register:hover span {
-                    transform: translateX(-8px);
-                }
+
+
+
 
                 @media (max-width: 1100px) {
                     .desktop-hero-img { display: none !important; }

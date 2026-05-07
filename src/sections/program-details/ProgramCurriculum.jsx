@@ -27,12 +27,12 @@ const ProgramCurriculum = ({ data }) => {
                         >
                             <div className="li-label" style={{ color: 'var(--gold)' }}>المرحلة {item.phase}</div>
                             <h3 className="l-title" style={{ fontSize: '1.5rem', color: 'white', margin: '20px 0' }}>{item.title}</h3>
-                            
+
                             {item.points ? (
                                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
                                     {item.points.map((point, pIndex) => (
-                                        <li key={pIndex} style={{ 
-                                            color: 'rgba(255,255,255,0.7)', 
+                                        <li key={pIndex} style={{
+                                            color: 'rgba(255,255,255,0.7)',
                                             fontSize: '0.95rem',
                                             lineHeight: '1.5',
                                             display: 'flex',
@@ -49,6 +49,12 @@ const ProgramCurriculum = ({ data }) => {
                             )}
                         </div>
                     ))}
+                </div>
+
+                <div style={{ marginTop: '80px', display: 'flex', justifyContent: 'center' }}>
+                    <a href="#payment-section" className="btn-register">
+                        سجلي الآن: طرق الدفع <span>←</span>
+                    </a>
                 </div>
             </div>
         </section>

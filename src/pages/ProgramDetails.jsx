@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import ProgramHero from '../sections/program-details/ProgramHero';
 import ProgramCurriculum from '../sections/program-details/ProgramCurriculum';
 import Testimonials from '../sections/home/Testimonials';
-import ProgramCTA from '../sections/program-details/ProgramCTA';
+import PaymentMethods from '../sections/program-details/PaymentMethods';
 
 import programsData from '../data/programs.json';
 import coursesData from '../data/courses.json';
@@ -29,7 +29,7 @@ const ProgramDetails = () => {
             <ProgramHero data={data.hero} />
             <ProgramCurriculum data={data.curriculum} />
             <Testimonials isCompact={true} />
-            <ProgramCTA />
+            <PaymentMethods />
         </main>
     );
 };

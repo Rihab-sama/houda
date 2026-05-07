@@ -60,6 +60,27 @@ body {
     letter-spacing: 0;
 }
 
+/* Global Fix for Numbers and Phone Links */
+a[href*="wa.me"], 
+a[href^="tel:"], 
+.info-value, 
+.rib-text,
+[dir="ltr"] {
+    direction: ltr !important;
+    unicode-bidi: isolate;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    /* Removed text-align: left to prevent layout shifting */
+}
+
+/* Ensure the parent alignment is respected */
+.footer-address, .info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* This will keep them aligned to the right in RTL */
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -176,6 +197,43 @@ h3 {
 
 .text-navy {
     color: var(--navy);
+}
+
+/* Premium Registration Button */
+.btn-register {
+    position: relative;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 18px 45px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: white !important;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-decoration: none !important;
+    box-shadow: 0 15px 35px rgba(181, 132, 11, 0.3);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+}
+
+.btn-register:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(181, 132, 11, 0.4);
+    color: white;
+}
+
+.btn-register span {
+    display: inline-block;
+    font-size: 1.3rem;
+    transition: transform 0.4s ease;
+}
+
+.btn-register:hover span {
+    transform: translateX(-8px);
 }
 
 
