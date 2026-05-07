@@ -152,11 +152,6 @@ const ServicesGrid = () => {
               ))}
             </nav>
 
-            <div className="sg-sidebar-promo">
-              <span className="sg-promo-tag">هل تحتاج إلى مساعدة؟</span>
-              <p className="sg-promo-text">اتصل بي للحصول على استشارة شخصية.</p>
-              <a href="#contact" className="sg-promo-link">اتصل بي</a>
-            </div>
           </div>
         </aside>
       </div>
