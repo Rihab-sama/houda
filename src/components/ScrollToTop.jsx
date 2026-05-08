@@ -8,10 +8,10 @@ const ScrollToTop = () => {
   const lenis = useLenis();
 
   useEffect(() => {
+    // 1. Scroll Logic
     if (location.hash) {
       const el = document.querySelector(location.hash);
       if (el) {
-        // Longer timeout to allow page layout and images to load
         const timer = setTimeout(() => {
           if (lenis) {
             lenis.scrollTo(el, { 
@@ -36,6 +36,31 @@ const ScrollToTop = () => {
         window.scrollTo(0, 0);
       }
     }
+
+    // 2. Intersection Observer Logic (for .reveal animations)
+    let observer;
+    const revealTimer = setTimeout(() => {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      const revealElements = document.querySelectorAll('.reveal');
+      revealElements.forEach(el => observer.observe(el));
+    }, 600);
+
+    return () => {
+      clearTimeout(revealTimer);
+      if (observer) observer.disconnect();
+    };
   }, [pathname, location.hash, lenis]);
 
   return null;

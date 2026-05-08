@@ -11,25 +11,8 @@ import AboutPage from './pages/AboutPage';
 import LegalPage from './pages/LegalPage';
 
 function App() {
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
+  // IntersectionObserver removed from here and moved to ScrollToTop to support route changes
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, observerOptions);
-
-    const revealElements = document.querySelectorAll('.reveal');
-    revealElements.forEach(el => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <Router>
