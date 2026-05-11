@@ -9,6 +9,7 @@ import ServicesPage from './pages/ServicesPage';
 import ProgramDetails from './pages/ProgramDetails';
 import AboutPage from './pages/AboutPage';
 import LegalPage from './pages/LegalPage';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   // IntersectionObserver removed from here and moved to ScrollToTop to support route changes
@@ -33,6 +34,7 @@ function App() {
           </Routes>
           <Footer />
         </div>
+        <Analytics />
       </ReactLenis>
     </Router>
   );
