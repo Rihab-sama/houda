@@ -10,6 +10,7 @@ import ProgramDetails from './pages/ProgramDetails';
 import AboutPage from './pages/AboutPage';
 import LegalPage from './pages/LegalPage';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 function App() {
   // IntersectionObserver removed from here and moved to ScrollToTop to support route changes
@@ -35,6 +36,7 @@ function App() {
           <Footer />
         </div>
         <Analytics />
+        <SpeedInsights />
       </ReactLenis>
     </Router>
   );
