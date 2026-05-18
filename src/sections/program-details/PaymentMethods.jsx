@@ -12,7 +12,7 @@ const PaymentMethods = () => {
     };
 
     return (
-        <section id="payment-section" className="payment-methods-section reveal">
+        <section id="payment-section" className="payment-methods-section">
             <style>{`
                 .payment-methods-section {
                     padding: 100px 0;
