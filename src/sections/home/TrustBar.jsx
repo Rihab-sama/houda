@@ -24,7 +24,7 @@ const TrustBar = () => {
                 </div>
             </div>
 
-            <style jsx>{`
+            <style>{`
                 .trust-bar-editorial {
                     padding: 30px 0;
                     background: var(--midnight);
