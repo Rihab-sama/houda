@@ -43,31 +43,44 @@ const ProgramHero = ({ data }) => {
                         </div>
                     </motion.div>
 
-                    <div className="l-info-bar" style={{ background: 'transparent', margin: '40px 0', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '60px', textAlign: 'center' }}>
-                        <div className="l-info-item" style={{ textAlign: 'center' }}>
+                    <div className="l-info-bar" style={{ background: 'transparent', margin: '40px 0', display: 'flex', justifyContent: 'space-around', alignItems: 'center', gap: '24px', textAlign: 'center', width: '100%', maxWidth: '650px', marginLeft: 'auto', marginRight: 'auto' }}>
+                        <div className="l-info-item" style={{ textAlign: 'center', flex: 1, minWidth: 'fit-content' }}>
                             <span className="li-label">المدة</span>
-                            <span className="li-value">
-                                {data.stats.duration.includes('(') ? (
+                            <span className="li-value" style={{ display: 'block', whiteSpace: 'nowrap' }}>
+                                {data.stats.duration.includes('|') ? (
+                                    <>
+                                        <span style={{ display: 'block', fontWeight: 700 }}>
+                                            {data.stats.duration.split('|')[0].trim()}
+                                        </span>
+                                        <span style={{ display: 'block', fontWeight: 400, fontSize: '0.85rem', opacity: 0.8, marginTop: '4px' }}>
+                                            {data.stats.duration.split('|')[1].trim()}
+                                        </span>
+                                    </>
+                                ) : data.stats.duration.includes('(') ? (
                                     <>{data.stats.duration.split('(')[0]} <br /> ({data.stats.duration.split('(')[1]}</>
                                 ) : data.stats.duration}
                             </span>
                         </div>
                         <div className="l-info-divider"></div>
-                        <div className="l-info-item" style={{ textAlign: 'center' }}>
+                        <div className="l-info-item" style={{ textAlign: 'center', flex: 1, minWidth: 'fit-content' }}>
                             <span className="li-label">الشكل</span>
-                            <span className="li-value">
+                            <span className="li-value" style={{ display: 'block', whiteSpace: 'nowrap' }}>
                                 {data.stats.format.includes('(') ? (
                                     <>{data.stats.format.split('(')[0]} <br /> ({data.stats.format.split('(')[1]}</>
                                 ) : data.stats.format}
                             </span>
                         </div>
                         <div className="l-info-divider"></div>
-                        <div className="l-info-item" style={{ textAlign: 'center' }}>
+                        <div className="l-info-item" style={{ textAlign: 'center', flex: 1, minWidth: 'fit-content' }}>
                             <span className="li-label">السعر</span>
-                            <span className="li-value" style={{ direction: 'ltr', display: 'inline-block' }}>
-                                {data.stats.price.includes('DH') ? (
-                                    <>{data.stats.price.split('DH')[0]} DH <br /> {data.stats.price.split('DH')[1]}</>
-                                ) : data.stats.price}
+                            <span className="li-value" style={{ display: 'block', whiteSpace: 'nowrap' }}>
+                                {data.stats.price.includes('DH') && data.stats.price.split('DH').length === 2 ? (
+                                    <span style={{ direction: 'ltr', display: 'inline-block' }}>
+                                        {data.stats.price.split('DH')[0]} DH <br /> {data.stats.price.split('DH')[1]}
+                                    </span>
+                                ) : (
+                                    data.stats.price
+                                )}
                             </span>
                         </div>
                     </div>
