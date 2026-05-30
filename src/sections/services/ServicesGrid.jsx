@@ -80,7 +80,39 @@ const ServiceCard = ({ service }) => (
         <div className="card-price-tag" style={{ alignItems: 'flex-start', textAlign: 'right' }}>
             <span className="price-label">الاستثمار:</span>
             <div className="price-stack" style={{ direction: 'ltr', textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                {service.price.includes('DH') ? (
+                {service.price.includes('|') ? (
+                    (() => {
+                        const [promoPart, originalPart] = service.price.split('|');
+                        const promoDH = promoPart.includes('DH') ? promoPart.split('DH')[0].trim() : promoPart.trim();
+                        const promoEuro = promoPart.includes('DH') ? promoPart.split('DH')[1].trim() : '';
+                        const originalDH = originalPart.includes('DH') ? originalPart.split('DH')[0].trim() : originalPart.trim();
+                        const originalEuro = originalPart.includes('DH') ? originalPart.split('DH')[1].trim() : '';
+                        return (
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px' }}>
+                                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', direction: 'ltr' }}>
+                                    <span className="price-amount" style={{ fontSize: '1.4rem' }}>
+                                        {promoDH} DH
+                                    </span>
+                                    <span style={{ textDecoration: 'line-through', opacity: 0.45, fontSize: '1rem', color: '#fff', fontWeight: 600 }}>
+                                        {originalDH} DH
+                                    </span>
+                                </div>
+                                {promoEuro && (
+                                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', direction: 'ltr' }}>
+                                        <span className="price-amount-secondary" style={{ color: 'var(--gold)', fontSize: '0.9rem', fontWeight: 600, opacity: 0.8 }}>
+                                            {promoEuro}
+                                        </span>
+                                        {originalEuro && (
+                                            <span style={{ textDecoration: 'line-through', opacity: 0.45, fontSize: '0.75rem', color: 'var(--gold)', fontWeight: 600 }}>
+                                                {originalEuro}
+                                            </span>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+                        );
+                    })()
+                ) : service.price.includes('DH') && service.price.split('DH').length === 2 ? (
                     <>
                         <span className="price-amount" style={{ fontSize: '1.4rem' }}>{service.price.split('DH')[0]} DH</span>
                         <span className="price-amount-secondary" style={{ color: 'var(--gold)', fontSize: '0.9rem', fontWeight: 600, opacity: 0.8, display: 'block', marginTop: '2px' }}>{service.price.split('DH')[1]}</span>

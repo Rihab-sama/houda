@@ -74,7 +74,39 @@ const ProgramHero = ({ data }) => {
                         <div className="l-info-item" style={{ textAlign: 'center', flex: 1, minWidth: 'fit-content' }}>
                             <span className="li-label">السعر</span>
                             <span className="li-value" style={{ display: 'block', whiteSpace: 'nowrap' }}>
-                                {data.stats.price.includes('DH') && data.stats.price.split('DH').length === 2 ? (
+                                {data.stats.price.includes('|') ? (
+                                    (() => {
+                                        const [promoPart, originalPart] = data.stats.price.split('|');
+                                        const promoDH = promoPart.includes('DH') ? promoPart.split('DH')[0].trim() : promoPart.trim();
+                                        const promoEuro = promoPart.includes('DH') ? promoPart.split('DH')[1].trim() : '';
+                                        const originalDH = originalPart.includes('DH') ? originalPart.split('DH')[0].trim() : originalPart.trim();
+                                        const originalEuro = originalPart.includes('DH') ? originalPart.split('DH')[1].trim() : '';
+                                        return (
+                                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+                                                <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', direction: 'ltr' }}>
+                                                    <span style={{ color: 'var(--gold-dark)', fontWeight: 800, fontSize: '1.35rem' }}>
+                                                        {promoDH} DH
+                                                    </span>
+                                                    <span style={{ textDecoration: 'line-through', opacity: 0.45, fontSize: '1.05rem', color: 'var(--midnight)', fontWeight: 600 }}>
+                                                        {originalDH} DH
+                                                    </span>
+                                                </div>
+                                                {promoEuro && (
+                                                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', direction: 'ltr' }}>
+                                                        <span style={{ color: 'var(--midnight)', fontWeight: 700, fontSize: '0.9rem', opacity: 0.8 }}>
+                                                            {promoEuro}
+                                                        </span>
+                                                        {originalEuro && (
+                                                            <span style={{ textDecoration: 'line-through', opacity: 0.45, fontSize: '0.75rem', color: 'var(--midnight)', fontWeight: 600 }}>
+                                                                {originalEuro}
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        );
+                                    })()
+                                ) : data.stats.price.includes('DH') && data.stats.price.split('DH').length === 2 ? (
                                     <span style={{ direction: 'ltr', display: 'inline-block' }}>
                                         {data.stats.price.split('DH')[0]} DH <br /> {data.stats.price.split('DH')[1]}
                                     </span>

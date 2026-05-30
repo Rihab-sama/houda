@@ -13,7 +13,7 @@
             "image": "/شفاء الماضي.jpg",
             "stats": {
                 "duration": "2 حصص (7h)",
-                "format": "Online (Zoom)",
+                "format": "مسجلة",
                 "price": "1050 DH  105€"
             }
         },
@@ -93,7 +93,7 @@
             "image": "/تحرر من الخوف.jpg",
             "stats": {
                 "duration": "3h 10min",
-                "format": "Online (Zoom)",
+                "format": "مسجلة",
                 "price": "650 DH  65€"
             }
         },
@@ -159,7 +159,7 @@
             "image": "/البدايات.jpg",
             "stats": {
                 "duration": "9 حصص (أكثر من 13h)",
-                "format": "Online (Zoom)",
+                "format": "مسجلة",
                 "price": "1855 DH  185.5€"
             }
         },
@@ -239,7 +239,7 @@
             "image": "/التحرر والانتقال.jpg",
             "stats": {
                 "duration": "3h 15min",
-                "format": "Online (Zoom)",
+                "format": "مسجلة",
                 "price": "500 DH  50€"
             }
         },
@@ -305,7 +305,7 @@
             "image": "/تحرر من الغضب.png",
             "stats": {
                 "duration": "2h 45min",
-                "format": "بث مباشر (Live)",
+                "format": "مسجلة",
                 "price": "650 DH  65€"
             }
         },
@@ -385,8 +385,8 @@
         "image": "/نفس حر.png",
         "stats": {
             "duration": "أيام 26، 28، 29 يونيو | الساعة 19:00 بتوقيت المغرب",
-            "format": "بث مباشر (Live)",
-            "price": "550 DH  55€" 
+            "format": "عن بعد (Zoom)",
+            "price": "550 DH  55€ | 1500 DH  150€" 
         }
     },
     "curriculum": {
