@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const PaymentMethods = () => {
     const [copied, setCopied] = useState(false);
 
-    const ribNumber = "230 640 5893171211016800 36";
+    const ribNumber = "164 640 2111149718360008 59";
 
     const handleCopy = () => {
         navigator.clipboard.writeText(ribNumber.replace(/\s/g, ''));
@@ -212,7 +212,7 @@ const PaymentMethods = () => {
                         <div className="payment-info-list">
                             <div className="info-item">
                                 <span className="info-label">اسم البنك</span>
-                                <span className="info-value">CIH BANQUE</span>
+                                <span className="info-value">Banque Populaire</span>
                             </div>
                             <div className="info-item">
                                 <span className="info-label">صاحب الحساب</span>
@@ -229,12 +229,12 @@ const PaymentMethods = () => {
                             </div>
                             <div className="info-item">
                                 <span className="info-label">CODE SWIFT / BIC</span>
-                                <span className="info-value">CIHMMAMC</span>
+                                <span className="info-value">BCPOMAMC</span>
                             </div>
-                            <div className="info-item">
+                            {/* <div className="info-item">
                                 <span className="info-label">رقم الحساب (لعملاء CIH)</span>
                                 <span className="info-value">5893171211016800</span>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 
