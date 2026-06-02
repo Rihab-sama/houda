@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const PaymentMethods = () => {
+const PaymentMethods = ({ isFeatured }) => {
     const [copied, setCopied] = useState(false);
 
     const ribNumber = "164 640 2111149718360008 59";
@@ -256,15 +256,15 @@ const PaymentMethods = () => {
                             </div>
                             <div className="info-item">
                                 <span className="info-label">الاسم الكامل</span>
-                                <span className="info-value">ABAHMANE HOUDA</span>
+                                <span className="info-value">{isFeatured ? "Rihab el kadmiri" : "ABAHMANE HOUDA"}</span>
                             </div>
                             <div className="info-item">
                                 <span className="info-label">رقم الهاتف</span>
-                                <span className="info-value">+212 661 491 819</span>
+                                <span className="info-value">{isFeatured ? "0643354739" : "+212 661 491 819"}</span>
                             </div>
                             <div className="info-item">
                                 <span className="info-label">المدينة</span>
-                                <span className="info-value">طنجة (Tanger)</span>
+                                <span className="info-value">{isFeatured ? "وجدة (Oujda)" : "طنجة (Tanger)"}</span>
                             </div>
                         </div>
                     </div>

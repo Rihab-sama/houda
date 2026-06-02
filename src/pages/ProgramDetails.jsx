@@ -29,7 +29,7 @@ const ProgramDetails = () => {
             <ProgramHero data={data.hero} />
             <ProgramCurriculum data={data.curriculum} />
             <Testimonials isCompact={true} />
-            <PaymentMethods />
+            <PaymentMethods isFeatured={data.isFeatured} />
         </main>
     );
 };
