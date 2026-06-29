@@ -238,7 +238,8 @@ const PaymentMethods = ({ isFeatured }) => {
                         </div>
                     </div>
 
-                    {/* Card 2: Agency Payment */}
+                    {/* Card 2: Agency Payment (Rihab & Houda) - Commented out for now */}
+                    {/*
                     <div className="payment-card">
                         <div className="card-header">
                             <div className="icon-box">
@@ -265,6 +266,38 @@ const PaymentMethods = ({ isFeatured }) => {
                             <div className="info-item">
                                 <span className="info-label">المدينة</span>
                                 <span className="info-value">{isFeatured ? "وجدة (Oujda)" : "طنجة (Tanger)"}</span>
+                            </div>
+                        </div>
+                    </div>
+                    */}
+
+                    {/* Card 3: Agency Payment (Only Houda) */}
+                    <div className="payment-card">
+                        <div className="card-header">
+                            <div className="icon-box">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </div>
+                            <h3 className="card-title">وكالات التحويل</h3>
+                        </div>
+
+                        <div className="payment-info-list">
+                            <div className="info-item">
+                                <span className="info-label">الوكالات المدعومة</span>
+                                <span className="info-value">Western Union / Ria / WafaCash / Cash Plus / Chaabi Cash / Damane Cash</span>
+                            </div>
+                            <div className="info-item">
+                                <span className="info-label">الاسم الكامل</span>
+                                <span className="info-value">ABAHMANE HOUDA</span>
+                            </div>
+                            <div className="info-item">
+                                <span className="info-label">رقم الهاتف</span>
+                                <span className="info-value">+212 661 491 819</span>
+                            </div>
+                            <div className="info-item">
+                                <span className="info-label">المدينة</span>
+                                <span className="info-value">طنجة (Tanger)</span>
                             </div>
                         </div>
                     </div>
