@@ -64,7 +64,19 @@ const NextProgram = () => {
                         <div className="l-info-divider"></div>
                         <div className="l-info-item">
                             <span className="li-label">المكان</span>
-                            <span className="li-value">عن بعد (Zoom)</span>
+                            <span className="li-value">
+                                {featuredCourse.hero.stats.format.includes('|') ? (
+                                    <>
+                                        {featuredCourse.hero.stats.format.split('|')[0].trim()}
+                                        <br />
+                                        <span className="li-subvalue" style={{ fontWeight: 400, opacity: 0.8, fontSize: '0.85rem', display: 'block', marginTop: '4px' }}>
+                                            {featuredCourse.hero.stats.format.split('|')[1].trim()}
+                                        </span>
+                                    </>
+                                ) : (
+                                    featuredCourse.hero.stats.format
+                                )}
+                            </span>
                         </div>
                     </div>
 

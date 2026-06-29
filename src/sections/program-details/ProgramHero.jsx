@@ -65,7 +65,16 @@ const ProgramHero = ({ data }) => {
                         <div className="l-info-item" style={{ textAlign: 'center', flex: 1, minWidth: 'fit-content' }}>
                             <span className="li-label">الشكل</span>
                             <span className="li-value" style={{ display: 'block', whiteSpace: 'nowrap' }}>
-                                {data.stats.format.includes('(') ? (
+                                {data.stats.format.includes('|') ? (
+                                    <>
+                                        <span style={{ display: 'block', fontWeight: 700 }}>
+                                            {data.stats.format.split('|')[0].trim()}
+                                        </span>
+                                        <span style={{ display: 'block', fontWeight: 400, fontSize: '0.85rem', opacity: 0.8, marginTop: '4px' }}>
+                                            {data.stats.format.split('|')[1].trim()}
+                                        </span>
+                                    </>
+                                ) : data.stats.format.includes('(') ? (
                                     <>{data.stats.format.split('(')[0]} <br /> ({data.stats.format.split('(')[1]}</>
                                 ) : data.stats.format}
                             </span>
