@@ -239,7 +239,7 @@ const PaymentMethods = ({ isFeatured }) => {
                     </div>
 
                     {/* Card 2: Agency Payment (Rihab & Houda) - Commented out for now */}
-                    {/*
+                    
                     <div className="payment-card">
                         <div className="card-header">
                             <div className="icon-box">
@@ -269,9 +269,10 @@ const PaymentMethods = ({ isFeatured }) => {
                             </div>
                         </div>
                     </div>
-                    */}
+                    
 
                     {/* Card 3: Agency Payment (Only Houda) */}
+                    {/*
                     <div className="payment-card">
                         <div className="card-header">
                             <div className="icon-box">
@@ -301,6 +302,7 @@ const PaymentMethods = ({ isFeatured }) => {
                             </div>
                         </div>
                     </div>
+                    */}
                 </div>
 
                 <div className="instruction-box">
