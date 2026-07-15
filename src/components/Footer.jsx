@@ -34,6 +34,7 @@ const Footer = () => {
                             <li><Link to="/">الرئيسية</Link></li>
                             <li><Link to="/about">من أنا</Link></li>
                             <li><Link to="/services">الخدمات والعروض</Link></li>
+                            <li><Link to="/free-guide">الكتيب المجاني</Link></li>
                         </ul>
                     </div>
 

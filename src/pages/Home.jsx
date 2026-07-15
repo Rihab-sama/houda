@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from '../sections/home/Hero';
 import TrustBar from '../sections/home/TrustBar';
 import NextProgram from '../sections/home/NextProgram';
+import FreeBookletSection from '../sections/home/FreeBookletSection';
 import AboutMe from '../sections/home/AboutMe';
 import Services from '../sections/home/ServicesHarmony';
 import Testimonials from '../sections/home/Testimonials';
@@ -13,6 +14,7 @@ const Home = () => {
             <Hero />
             <TrustBar />
             <NextProgram />
+            <FreeBookletSection />
             <AboutMe />
             <Services />
             <Testimonials />

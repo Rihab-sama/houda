@@ -9,6 +9,7 @@ import ServicesPage from './pages/ServicesPage';
 import ProgramDetails from './pages/ProgramDetails';
 import AboutPage from './pages/AboutPage';
 import LegalPage from './pages/LegalPage';
+import FreeBookletPage from './pages/FreeBookletPage';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/program-details/:slug" element={<ProgramDetails />} />
             <Route path="/legal" element={<LegalPage />} />
+            <Route path="/free-guide" element={<FreeBookletPage />} />
           </Routes>
           <Footer />
         </div>
