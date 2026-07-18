@@ -10,6 +10,7 @@ import ProgramDetails from './pages/ProgramDetails';
 import AboutPage from './pages/AboutPage';
 import LegalPage from './pages/LegalPage';
 import FreeBookletPage from './pages/FreeBookletPage';
+import PromoPopup from './components/PromoPopup';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 
@@ -27,6 +28,7 @@ function App() {
         <div className="App">
           <ScrollToTop />
           <Navbar />
+          <PromoPopup />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutPage />} />
