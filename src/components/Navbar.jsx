@@ -116,6 +116,14 @@ const Navbar = () => {
                     </li>
                     <li>
                         <Link
+                            to="/meditations"
+                            className={location.pathname === '/meditations' || location.pathname.startsWith('/meditations/') ? 'active' : ''}
+                        >
+                            تأملات
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
                             to="/free-guide"
                             className={location.pathname === '/free-guide' ? 'active' : ''}
                         >
@@ -175,6 +183,7 @@ const Navbar = () => {
                         </li>
                         <li><Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>من أنا</Link></li>
                         <li><Link to="/services" onClick={() => setIsMobileMenuOpen(false)}>الخدمات</Link></li>
+                        <li><Link to="/meditations" onClick={() => setIsMobileMenuOpen(false)}>تأملات</Link></li>
                         <li><Link to="/free-guide" onClick={() => setIsMobileMenuOpen(false)}>كتيب مجاني</Link></li>
                         <li>
                             {isHome ? (

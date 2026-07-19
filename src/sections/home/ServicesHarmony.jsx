@@ -61,7 +61,7 @@ const ServicesHarmony = () => {
 
                         {/* 03 - Medium Card Bottom */}
                         <motion.a
-                            href="/services"
+                            href="/meditations"
                             className="harmony-card card-medium"
                             style={{ textDecoration: 'none', display: 'block' }}
                             initial={{ opacity: 0, y: 20 }}

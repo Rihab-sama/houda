@@ -10,6 +10,8 @@ import ProgramDetails from './pages/ProgramDetails';
 import AboutPage from './pages/AboutPage';
 import LegalPage from './pages/LegalPage';
 import FreeBookletPage from './pages/FreeBookletPage';
+import MeditationsPage from './pages/MeditationsPage';
+import MeditationDetailsPage from './pages/MeditationDetailsPage';
 import PromoPopup from './components/PromoPopup';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
@@ -36,6 +38,8 @@ function App() {
             <Route path="/program-details/:slug" element={<ProgramDetails />} />
             <Route path="/legal" element={<LegalPage />} />
             <Route path="/free-guide" element={<FreeBookletPage />} />
+            <Route path="/meditations" element={<MeditationsPage />} />
+            <Route path="/meditations/:slug" element={<MeditationDetailsPage />} />
           </Routes>
           <Footer />
         </div>
