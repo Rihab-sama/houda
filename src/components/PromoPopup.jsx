@@ -57,7 +57,7 @@ const PromoPopup = () => {
 
                                 <div className="promo-actions">
                                     <a 
-                                        href="https://wa.me/212661491819?text=مرحباً، أريد الاستفسار عن عرض خصم باقة الدورات" 
+                                        href="https://wa.me/212643354739?text=مرحباً، أريد الاستفسار عن عرض خصم باقة الدورات" 
                                         target="_blank" 
                                         rel="noopener noreferrer" 
                                         className="promo-cta-btn"
