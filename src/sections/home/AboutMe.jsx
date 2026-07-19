@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AboutMe = () => {
     return (
@@ -62,10 +63,10 @@ const AboutMe = () => {
                         </div>
 
                         <div className="node-action">
-                            <a href="/about" className="btn-experimental">
+                            <Link to="/about" className="btn-experimental">
                                 اكتشف القصة كاملة
                                 <div className="btn-line"></div>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

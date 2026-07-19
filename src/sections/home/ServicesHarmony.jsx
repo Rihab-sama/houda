@@ -1,5 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+
+const MotionLink = motion(Link);
 
 const ServicesHarmony = () => {
     return (
@@ -16,8 +19,8 @@ const ServicesHarmony = () => {
 
                 <div className="harmony-grid">
                     {/* 01 - Large Card Left */}
-                    <motion.a
-                        href="/services"
+                    <MotionLink
+                        to="/services"
                         className="harmony-card card-large"
                         style={{ textDecoration: 'none', display: 'block' }}
                         initial={{ opacity: 0, y: 20 }}
@@ -34,13 +37,13 @@ const ServicesHarmony = () => {
                             <p className="card-desc">انغماس حي. اتصلي من أي مكان لجلسة كوتشينج عالية الجودة تضمن لك الوضوح والنتيجة.</p>
                             <div className="card-btn-primary"> الاطلاع على كل الحصص <span>←</span></div>
                         </div>
-                    </motion.a>
+                    </MotionLink>
 
                     {/* Right Column Stack */}
                     <div className="harmony-right-col">
                         {/* 02 - Medium Card Top */}
-                        <motion.a
-                            href="/services"
+                        <MotionLink
+                            to="/services"
                             className="harmony-card card-medium"
                             style={{ textDecoration: 'none', display: 'block' }}
                             initial={{ opacity: 0, y: 20 }}
@@ -57,11 +60,11 @@ const ServicesHarmony = () => {
                                 <p className="card-desc">تعلمي مهارات جديدة وطوري وعيك من خلال دورات متخصصة ومكثفة.</p>
                                 <div className="card-btn-primary"> الاطلاع على كل الدورات <span>←</span></div>
                             </div>
-                        </motion.a>
+                        </MotionLink>
 
                         {/* 03 - Medium Card Bottom */}
-                        <motion.a
-                            href="/meditations"
+                        <MotionLink
+                            to="/meditations"
                             className="harmony-card card-medium"
                             style={{ textDecoration: 'none', display: 'block' }}
                             initial={{ opacity: 0, y: 20 }}
@@ -78,7 +81,7 @@ const ServicesHarmony = () => {
                                 <p className="card-desc">استمتعي بلحظات من الهدوء لتجديد طاقتك وتصفية ذهنك يومياً.</p>
                                 <div className="card-btn-primary"> للاطلاع على كل التاملات <span>←</span></div>
                             </div>
-                        </motion.a>
+                        </MotionLink>
                     </div>
                 </div>
             </div>

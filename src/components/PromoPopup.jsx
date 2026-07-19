@@ -61,6 +61,7 @@ const PromoPopup = () => {
                                         target="_blank" 
                                         rel="noopener noreferrer" 
                                         className="promo-cta-btn"
+                                        onClick={handleClose}
                                     >
                                         <MessageCircle size={18} />
                                         <span>تواصل معنا للاشتراك والاستفسار</span>

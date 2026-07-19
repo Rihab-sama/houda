@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Tag, MapPin, ArrowLeft, LayoutGrid, List } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 import programsData from '../../data/programs.json';
 import coursesData from '../../data/courses.json';
@@ -56,10 +57,12 @@ const handleCardMouseLeave = (card) => {
   card.style.setProperty('--m-y', `50%`);
 };
 
+const MotionLink = motion(Link);
+
 // ─── CARD COMPONENT ──────────────────────────────────────────────────────────
 const ServiceCard = ({ service }) => (
-  <motion.a
-    href={`/program-details/${service.slug}`}
+  <MotionLink
+    to={`/program-details/${service.slug}`}
     className="atlas-card-mini"
     onMouseMove={(e) => handleCardMouseMove(e, e.currentTarget)}
     onMouseLeave={(e) => handleCardMouseLeave(e.currentTarget)}
@@ -128,7 +131,7 @@ const ServiceCard = ({ service }) => (
         </div>
       </div>
     </div>
-  </motion.a>
+  </MotionLink>
 );
 
 
