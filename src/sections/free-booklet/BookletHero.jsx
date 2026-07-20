@@ -4,6 +4,25 @@ import { motion } from 'framer-motion';
 import { Download, Sparkles, ShieldCheck, ArrowLeft } from 'lucide-react';
 
 const BookletHero = () => {
+    const handleDownload = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('https://assets.houdaharmony.com/pdf/free-guide.pdf');
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Houda_Harmony_Free_Guide.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error('Download error:', error);
+            window.open('https://assets.houdaharmony.com/pdf/free-guide.pdf', '_blank');
+        }
+    };
+
     return (
         <section className="landing-hero-premium">
             <div className="hero-ambient-glow-purple"></div>
@@ -30,8 +49,9 @@ const BookletHero = () => {
 
                         <div className="hero-actions">
                             <motion.a 
-                                href="/free-guide.pdf" 
+                                href="https://assets.houdaharmony.com/pdf/free-guide.pdf" 
                                 download="Houda_Harmony_Free_Guide.pdf"
+                                onClick={handleDownload}
                                 className="btn-hero-primary"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
