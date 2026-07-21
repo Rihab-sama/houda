@@ -81,7 +81,7 @@ const Navbar = () => {
         <nav className={`navbar glass-nav ${isScrolled ? 'scrolled' : ''} ${isMobileMenuOpen ? 'menu-open' : ''}`}>
             <div className="nav-container">
                 <Link to="/" className="logo" onClick={() => setIsMobileMenuOpen(false)}>
-                    <img src="/logo-premium.png" alt="Houda Harmony" className="logo-img" />
+                    <img src="https://assets.houdaharmony.com/img/logo-premium.png" alt="Houda Harmony" className="logo-img" />
                 </Link>
 
                 <ul className="nav-links">

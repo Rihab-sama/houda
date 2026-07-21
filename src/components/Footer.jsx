@@ -10,7 +10,7 @@ const Footer = () => {
                     {/* Column 1: Brand */}
                     <div className="footer-col col-brand">
                         <div className="footer-logo-premium">
-                            <img src="/logo-premium.png" alt="Houda Harmony" className="footer-logo-img" />
+                            <img src="https://assets.houdaharmony.com/img/logo-premium.png" alt="Houda Harmony" className="footer-logo-img" />
                         </div>
                         <p className="footer-manifesto">
                             التميز في خدمة تحولك. نهج شمولي يجمع بين القوة الذهنية والسكينة العميقة لقادة الغد.
